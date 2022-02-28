@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :vending_machines do
+    resources :bookings, only: [:create]
+    resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
+  end
+  resources :users do
+    resources :bookings, only: [:index, :edit, :update]
+  end
+  # subject to further validation / conversation with team
+  get '/dashboard', to: 'pages#dashboard', as: :dashboard
 end
