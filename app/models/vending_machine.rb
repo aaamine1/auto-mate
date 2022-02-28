@@ -1,0 +1,2 @@
+class VendingMachine < ApplicationRecord
+end
