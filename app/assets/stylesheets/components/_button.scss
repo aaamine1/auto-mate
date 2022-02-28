@@ -15,3 +15,25 @@
   }
 
 }
+
+.btn-black {
+  background: #131414;
+  padding: 10px 45px !important;
+  border-radius: 30px;
+  color:white ;
+  transition: background 0.3s ease;
+
+  text-decoration: none !important;
+  &:hover {
+    opacity: 0.8;
+  }
+
+
+
+}
+
+#btn-explore {
+  position: absolute;
+  top: 2px;
+  left: 45%;
+}

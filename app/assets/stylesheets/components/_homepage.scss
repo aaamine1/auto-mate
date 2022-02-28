@@ -40,3 +40,10 @@
 body {
   background-color: #131414;
 }
+
+.bottom-link-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+
+}
