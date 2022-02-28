@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_144724) do
+ActiveRecord::Schema.define(version: 2022_02_28_151026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2022_02_28_144724) do
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -28,6 +30,10 @@ ActiveRecord::Schema.define(version: 2022_02_28_144724) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "vending_machine_id", null: false
+    t.bigint "product_id", null: false
+    t.index ["product_id"], name: "index_items_on_product_id"
+    t.index ["vending_machine_id"], name: "index_items_on_vending_machine_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -47,9 +53,6 @@ ActiveRecord::Schema.define(version: 2022_02_28_144724) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "iban"
     t.integer "user_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -65,6 +68,9 @@ ActiveRecord::Schema.define(version: 2022_02_28_144724) do
     t.index ["user_id"], name: "index_vending_machines_on_user_id"
   end
 
+  add_foreign_key "bookings", "users"
+  add_foreign_key "items", "products"
+  add_foreign_key "items", "vending_machines"
   add_foreign_key "products", "items"
   add_foreign_key "vending_machines", "users"
 end
