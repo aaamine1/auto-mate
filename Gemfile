@@ -30,8 +30,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 
+gem 'font-awesome-sass', '~> 5.6.1'
+
 gem 'autoprefixer-rails', '10.2.5'
-gem 'font-awesome-sass'
+
 gem 'simple_form'
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
@@ -62,3 +64,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "font-awesome-rails"

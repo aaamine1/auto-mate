@@ -1,10 +1,14 @@
 .btn {
-  background: #313415;
-  padding: 2px 10px;
-  border-radius: 50px;
+  background: #fc776e;
+  padding: 8px 25px !important;
+  // margin: 5px 0px;
+  border-radius: 30px;
   color:white !important;
+  transition: background 0.3s ease;
+  margin: 3px;
   &:hover {
-    opacity: 1;
+
+    background: #d3655d;
   }
   li {
     color: white;
