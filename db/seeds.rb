@@ -44,16 +44,16 @@ User.create(email: "e.e@e.e", password: "123123", iban: Faker::Bank.iban, first_
 # e_file = URI.open('https://res.cloudinary.com/dd9kjgqwb/image/upload/v1645710416/kevin-wolf-BdNtxMj2H4Y-unsplash_n1mwlo.jpg')
 # f_file = URI.open('https://res.cloudinary.com/dd9kjgqwb/image/upload/v1645710416/joah-legg-9HDeGTY2dFk-unsplash_wth37m.jpg')
 
-a = VendingMachine.new(name: "Studio Zuid",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
-b = VendingMachine.new(name: "Event Lounge",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
-c = VendingMachine.new(name: "The Egg",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
-d = VendingMachine.new(name: "Versailles",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
-e = VendingMachine.new(name: "Studio Noord",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
-f = VendingMachine.new(name: "Skyline Park",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
+VendingMachine.create!(name: "Studio Zuid",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
+VendingMachine.create!(name: "Event Lounge",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
+VendingMachine.create!(name: "The Egg",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
+VendingMachine.create!(name: "Versailles",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
+VendingMachine.create!(name: "Studio Noord",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
+VendingMachine.create!(name: "Skyline Park",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
 
-('a'..'f').each do |name|
-  name.save
-end
+# ('a'..'f').each do |name|
+#   name.save
+# end
 
 # a.photo.attach(io: a_file, filename: 'studio/zuid.png', content_type: 'image/png')
 # a.save
@@ -69,18 +69,18 @@ end
 # f.save
 
 
-Product.create(category: "snacks", name: "Lays chips 200gr")
-Product.create(category: "snacks", name: "Snickers 50gr")
-Product.create(category: "snacks", name: "M&M pinda 45gr")
+Product.create!(category: "snacks", name: "Lays chips 200gr")
+Product.create!(category: "snacks", name: "Snickers 50gr")
+Product.create!(category: "snacks", name: "M&M pinda 45gr")
 
-Product.create(category: "drinks", name: "Coca Cola 33cl can")
-Product.create(category: "drinks", name: "Sprite 33cl can")
-Product.create(category: "drinks", name: "Chaudfontaine still water 33cl bottle")
-Product.create(category: "drinks", name: "Aquarius lemon 50cl bottle")
+Product.create!(category: "drinks", name: "Coca Cola 33cl can")
+Product.create!(category: "drinks", name: "Sprite 33cl can")
+Product.create!(category: "drinks", name: "Chaudfontaine still water 33cl bottle")
+Product.create!(category: "drinks", name: "Aquarius lemon 50cl bottle")
 
-Product.create(category: "technology", name: "Ninebot Segway ES4 battery charged")
-Product.create(category: "technology", name: "Pure Air Go battery charged")
-Product.create(category: "technology", name: "Matrix E-Bike D8 ProS battery charged")
+Product.create!(category: "technology", name: "Ninebot Segway ES4 battery charged")
+Product.create!(category: "technology", name: "Pure Air Go battery charged")
+Product.create!(category: "technology", name: "Matrix E-Bike D8 ProS battery charged")
 
 
 20.times do
@@ -91,12 +91,11 @@ Product.create(category: "technology", name: "Matrix E-Bike D8 ProS battery char
     this_price = 2
   end
   Item.create!(
-    status: "pending",
-    vending_machine_id: VendingMachine.all.sample,
+    vending_machine: VendingMachine.all.sample,
     capacity: [20, 40, 60, 80].sample,
     quantity: rand(0..20),
-    product_id: this_product.id,
-    price: this_price,
+    product: this_product,
+    list_price: this_price,
     margin: [5, 10, 12, 15, 20].sample
    )
 end
@@ -106,7 +105,7 @@ end
   Booking.create!(
     status: "pending",
     user: User.all.sample,
-    venue: VendingMachine.all.sample
+    vending_machine: VendingMachine.all.sample
    )
 end
 

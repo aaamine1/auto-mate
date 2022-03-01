@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_01_145021) do
+ActiveRecord::Schema.define(version: 2022_03_01_153020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 2022_03_01_145021) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.bigint "vending_machine_id", null: false
     t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["vending_machine_id"], name: "index_bookings_on_vending_machine_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -39,10 +41,8 @@ ActiveRecord::Schema.define(version: 2022_03_01_145021) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "category"
-    t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_products_on_item_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2022_03_01_145021) do
   end
 
   add_foreign_key "bookings", "users"
+  add_foreign_key "bookings", "vending_machines"
   add_foreign_key "items", "products"
   add_foreign_key "items", "vending_machines"
-  add_foreign_key "products", "items"
   add_foreign_key "vending_machines", "users"
 end
