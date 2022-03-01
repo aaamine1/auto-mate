@@ -1,9 +1,9 @@
-class VendingMachineController < ApplicationController
+class VendingMachinesController < ApplicationController
 
-    def index 
-        @vending_machine = VendingMachine.all 
+    def index
+        @vending_machines = VendingMachine.all
 
-        @markers = @vending_machine.geocoded.map do |vending_machine|
+        @markers = @vending_machines.geocoded.map do |vending_machine|
             {
               lat: venue.latitude,
               lng: venue.longitude,
@@ -11,13 +11,13 @@ class VendingMachineController < ApplicationController
             }
     end
 
-    def show 
+    def show
         @vending_machine = VendingMachine.find(params[:id])
-    end 
+    end
 
     def new
         @vending_machine = VendingMachine.new
-    end 
+    end
 
     def create
         @vending_machine = VendingMachine.new(vending_machine_params)
@@ -27,28 +27,28 @@ class VendingMachineController < ApplicationController
         else
           render :new
         end
-    end 
+    end
 
-    def edit 
+    def edit
         @vending_machine = VendingMachine.find(params[:id])
-    end 
+    end
 
     def update
         @vending_machine = VendingMachine.find(params[:id])
         @vending_machine.update(vending_machine_params)
         redirect_to vending_machine_path(@vending_machine)
-    end 
+    end
 
     def destroy
         @vending_machine = VendingMachine.find(params[:id])
         @vending_machine.destroy
         redirect_to vending_machines_path
-    end 
+    end
 
-    private 
+    private
 
     def venue_params
         params.require(:vending_machine).permit(:address, :description)
     end
-    
+
 end
