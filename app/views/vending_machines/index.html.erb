@@ -1,0 +1,11 @@
+<div class="banner-index">
+    <h1> My Auto-mate dashboard </h1> 
+</div>
+
+<div>
+    <% @vending_machines.each do |vending_machine|%>
+        <% vending_machine.name%>
+        <% vending_machine.address%>
+        <% vending_machine.description%>
+    <%end %>
+</div>

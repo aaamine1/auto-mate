@@ -3,12 +3,13 @@ class VendingMachinesController < ApplicationController
     def index
         @vending_machines = VendingMachine.all
 
-        @markers = @vending_machines.geocoded.map do |vending_machine|
-            {
-              lat: venue.latitude,
-              lng: venue.longitude,
-              info_window: render_to_string(partial: "info_window", locals: { vending_machine: vending_machine })
-            }
+        # @markers = @vending_machines.geocoded.map do |vending_machine|
+        # {
+        #     lat: venue.latitude,
+        #     lng: venue.longitude,
+        #     info_window: render_to_string(partial: "info_window", locals: { vending_machine: vending_machine })
+        # }
+        # end
     end
 
     def show
@@ -49,6 +50,5 @@ class VendingMachinesController < ApplicationController
 
     def venue_params
         params.require(:vending_machine).permit(:address, :description)
-    end
     end
 end
