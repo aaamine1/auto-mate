@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_03_01_145021) do
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.string "status"
+    t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 2022_03_01_145021) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.text "description"
+    t.string "name"
     t.index ["user_id"], name: "index_vending_machines_on_user_id"
   end
 

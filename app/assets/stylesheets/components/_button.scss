@@ -2,10 +2,10 @@
   background: #fc776e;
   padding: 8px 25px !important;
   // margin: 5px 0px;
-  border-radius: 30px;
+  border-radius: 30px !important;
   color:white !important;
   transition: background 0.3s ease;
-  margin: 3px;
+
   &:hover {
 
     background: #d3655d;
@@ -14,6 +14,45 @@
     color: white;
   }
 
+}
+
+.form-actions {
+  .btn {
+    width: 100%;
+  }
+}
+
+.btn-login {
+  background: #fc776e;
+  // margin: 5px 0px;
+  border-radius: 30px !important;
+  color:white !important;
+  transition: background 0.3s ease;
+  margin-top: 3px !important;
+  width: 100%;
+  &:hover {
+
+    background: #d3655d;
+  }
+  li {
+    color: white;
+  }
+}
+
+#test {
+  background: #131414;
+}
+
+.form-actions {
+  margin-top: 10px;
+  .btn {
+    margin-top: 10px !important;
+  }
+}
+
+#sign-up {
+  width: 100%;
+  margin-top: 3px !important;
 }
 
 .btn-black {
