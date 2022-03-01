@@ -35,6 +35,10 @@ gem 'font-awesome-sass', '~> 5.6.1'
 gem 'autoprefixer-rails', '10.2.5'
 
 gem 'simple_form'
+
+gem 'faker'
+gem 'rubocop-faker'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
