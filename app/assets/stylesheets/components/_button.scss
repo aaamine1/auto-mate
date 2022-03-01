@@ -1,0 +1,39 @@
+.btn {
+  background: #fc776e;
+  padding: 8px 25px !important;
+  // margin: 5px 0px;
+  border-radius: 30px;
+  color:white !important;
+  transition: background 0.3s ease;
+  margin: 3px;
+  &:hover {
+
+    background: #d3655d;
+  }
+  li {
+    color: white;
+  }
+
+}
+
+.btn-black {
+  background: #131414;
+  padding: 10px 45px !important;
+  border-radius: 30px;
+  color:white ;
+  transition: background 0.3s ease;
+
+  text-decoration: none !important;
+  &:hover {
+    opacity: 0.8;
+  }
+
+
+
+}
+
+#btn-explore {
+  position: absolute;
+  top: 2px;
+  left: 45%;
+}

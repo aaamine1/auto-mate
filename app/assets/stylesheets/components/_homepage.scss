@@ -1,0 +1,49 @@
+.left-text-intro {
+  padding: 100px 50px;
+  width: 30%;
+  display: grid;
+  position: absolute;
+  left: 8%;
+  color: white;
+  h1 {
+    font-size: 50px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 20px;
+    opacity: 0.8;
+  }
+  a {
+    text-decoration: underline;
+    color: white;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.background-holder {
+  background-color: #f8837b;
+  height:550px;
+  position: relative;
+  display: flex;
+
+}
+
+.background-image {
+  height: 800px;
+  position: absolute;
+  right: 10%;
+  top: 5%;
+}
+
+body {
+  background-color: #131414;
+}
+
+.bottom-link-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+
+}

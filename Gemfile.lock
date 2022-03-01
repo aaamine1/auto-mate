@@ -96,7 +96,9 @@ GEM
     erubi (1.10.0)
     execjs (2.7.0)
     ffi (1.15.5)
-    font-awesome-sass (5.15.1)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
+    font-awesome-sass (5.6.1)
       sassc (>= 1.11)
     geocoder (1.7.3)
     globalid (1.0.0)
@@ -247,7 +249,8 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   dotenv-rails
-  font-awesome-sass
+  font-awesome-rails
+  font-awesome-sass (~> 5.6.1)
   geocoder
   jbuilder (~> 2.7)
   listen (~> 3.3)
