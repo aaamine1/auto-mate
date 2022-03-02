@@ -2,16 +2,26 @@
     <h1> My Auto-mate dashboard </h1>
 </div> %>
 
-<div style="height: 400px">
+<%# <%= render :partial => "shared/map" %>
+
+
+
+<div style=" margin-top: 30px" >
     <ul>
         <% @vending_machines.each do |vending_machine|%>
             <li> <%= link_to vending_machine.name, vending_machine_path(vending_machine) %> </li>
             <%= vending_machine.address%>
             - <%= vending_machine.description%>
-            <%= link_to "edit", edit_vending_machine_path(current_user, vending_machine) %>
-            <%= link_to "delete", vending_machine_path(current_user, vending_machine), method: :delete %>
+            <%= link_to edit_vending_machine_path(vending_machine), class: "btn" do %>
+               <i class="fa fa-pencil" aria-hidden="true"></i>
+            <% end %>
+
+            <%= link_to vending_machine_path(vending_machine), method: :delete, class: "btn", data: { confirm: 'Are you sure?' } do %>
+               <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+
+
             <%# <%= link_to "manage items", vending_machine_items_path(@vending_machine) %>
         <%end %>
     </ul>
 </div>
-
