@@ -39,8 +39,24 @@
   }
 }
 
+.btn-send {
+  background: #fc776e;
+  padding: 8px 16px;
+  border-radius: 5px !important;
+  color:white !important;
+  transition: background 0.3s ease;
+  margin-left: 5px !important;
+  &:hover {
+
+    background: #d3655d;
+  }
+  li {
+    color: white;
+  }
+}
+
 #test {
-  background: #131414;
+  background: #212529;
 }
 
 .form-actions {
@@ -56,7 +72,7 @@
 }
 
 .btn-black {
-  background: #131414;
+  background: #212529;
   padding: 10px 45px !important;
   border-radius: 30px;
   color:white ;
