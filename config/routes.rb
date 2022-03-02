@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :bookings, only: [:index, :edit, :update]
   end
-  resources :products, only: [:index, :new, :create, :edit, :update]
   # subject to further validation / conversation with team
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
 end
