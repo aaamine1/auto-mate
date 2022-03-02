@@ -1,5 +1,4 @@
 class VendingMachinesController < ApplicationController
-
     def index
         @vending_machines = VendingMachine.all
 

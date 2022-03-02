@@ -6,13 +6,17 @@
   <div class="left-text-intro">
     <h1>We make sure your vending machines stay stocked. 🍬 </h1>
     <p>Join us today for a streamlined solution to make sure your vending machines
-    stay filled year round.
+    stay filled year round.</p>
 
-
+    <%# new_user_registration %>
     <div class="bottom-link-intro">
       <div id="intro-elements-grid">
-        <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i></i>Become a vendor</a> <br>
-        <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i></i>Become a refiller</a>
+        <%= link_to new_user_registration_path(user: "vendor") do%>
+          <i class="fa fa-arrow-right" aria-hidden="true"></i></i> Become a vendor <br>
+        <% end  %>
+        <%= link_to new_user_registration_path(user: "refiller") do%>
+          <i class="fa fa-arrow-right" aria-hidden="true"></i></i> Become a refiller
+        <% end  %>
       </div>
       <div id="intro-elements-grid">
         <a href="#" class="btn-black" id="btn-explore">Explore</a>
