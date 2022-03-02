@@ -49,6 +49,6 @@ class VendingMachinesController < ApplicationController
     private
 
     def vending_machine_params
-        params.require(:vending_machine).permit(:address, :description)
+        params.require(:vending_machine).permit(:address, :description, :id)
     end
 end
