@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     resources :bookings, only: [:index, :edit, :update]
   end
   # subject to further validation / conversation with team
-  get '/dashboard', to: 'pages#dashboard', as: :dashboard
+  get '/dashboard_vendor', to: 'pages#dashboard_vendor', as: :dashboard
 end
