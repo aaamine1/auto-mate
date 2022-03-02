@@ -1,8 +1,8 @@
-<div class="banner-index">
-    <h1> My Auto-mate dashboard </h1> 
-</div>
+<%# <div class="banner-index">
+    <h1> My Auto-mate dashboard </h1>
+</div> %>
 
-<div>
+<div style="height: 400px">
     <ul>
         <% @vending_machines.each do |vending_machine|%>
             <li> <%= link_to vending_machine.name, vending_machine_path(vending_machine) %> </li>
@@ -14,3 +14,4 @@
         <%end %>
     </ul>
 </div>
+
