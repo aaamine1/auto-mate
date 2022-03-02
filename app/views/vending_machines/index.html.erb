@@ -3,9 +3,14 @@
 </div>
 
 <div>
-    <% @vending_machines.each do |vending_machine|%>
-        <% vending_machine.name%>
-        <% vending_machine.address%>
-        <% vending_machine.description%>
-    <%end %>
+    <ul>
+        <% @vending_machines.each do |vending_machine|%>
+            <li> <%= link_to vending_machine.name, vending_machine_path(vending_machine) %> </li>
+            <%= vending_machine.address%>
+            - <%= vending_machine.description%>
+            <%= link_to "edit", edit_vending_machine_path(current_user, vending_machine) %>
+            <%= link_to "delete", vending_machine_path(current_user, vending_machine), method: :delete %>
+            <%# <%= link_to "manage items", vending_machine_items_path(@vending_machine) %>
+        <%end %>
+    </ul>
 </div>
