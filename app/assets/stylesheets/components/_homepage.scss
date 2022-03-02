@@ -24,7 +24,7 @@
 
 .background-holder {
   background-color: #f8837b;
-  height:550px;
+  height: 650px;
   position: relative;
   display: flex;
 
@@ -46,4 +46,14 @@ body {
   grid-template-columns: 1fr 1fr;
   position: relative;
 
+}
+
+
+
+svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10vw;
+  /* set height to pixels if you want angle to change with screen width */
 }
