@@ -13,6 +13,7 @@ class VendingMachinesController < ApplicationController
 
     def show
         @vending_machine = VendingMachine.find(params[:id])
+        @item = Item.new
     end
 
     def new
@@ -47,7 +48,7 @@ class VendingMachinesController < ApplicationController
 
     private
 
-    def venue_params
+    def vending_machine_params
         params.require(:vending_machine).permit(:address, :description)
     end
 end
