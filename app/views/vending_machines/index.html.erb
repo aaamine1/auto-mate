@@ -7,5 +7,10 @@
         <% vending_machine.name%>
         <% vending_machine.address%>
         <% vending_machine.description%>
+        <%= link_to vending_machine.name, vending_machine_path(vending_machine) %>
     <%end %>
 </div>
+
+<%= link_to "edit", vending_machine_path(vending_machine) %>
+<%= link_to "delete", vending_machine_path(vending_machine), method: :delete %>
+<%= link_to "manage items", vending_machine_items_path(vending_machine) %>
