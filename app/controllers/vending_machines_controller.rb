@@ -1,23 +1,12 @@
 class VendingMachinesController < ApplicationController
     def index
         @vending_machines = VendingMachine.all
-        # @markers = @vending_machines.geocoded.map do |vending_machine|
-        # {
-        #     lat: venue.latitude,
-        #     lng: venue.longitude,
-        #     info_window: render_to_string(partial: "info_window", locals: { vending_machine: vending_machine })
-
-        # be carefull for , in previous line
-        # info_window: render_to_string(partial: "info_window", locals: { vending_machine: vending_machine })
-
-        # }
-        # end
-
         # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
         @markers = @vending_machines.geocoded.map do |vending_machine|
           {
             lat: vending_machine.latitude,
-            lng: vending_machine.longitude
+            lng: vending_machine.longitude,
+            info_window: render_to_string(partial: "info_window", locals: { vending_machine: vending_machine })
           }
         end
     end
