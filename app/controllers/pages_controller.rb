@@ -4,10 +4,10 @@ class PagesController < ApplicationController
   def home
   end
 
-  def dahsboard 
+  def dashboard_vendor 
 
-    @vendor_vending_machines = VendingMachine.where(user_id: current_user) 
-    @my_bookings = Booking.where(vending_machine_id: vending_machine_id)
+    # @vendor_vending_machines = VendingMachine.where(user_id: current_user) 
+    # @my_bookings = Booking.where(vending_machine_id: vending_machine_id)
     # @my_bookings = Booking.all.select do |booking|
     #   booking.user_id == current_user.id
     # end 
@@ -24,18 +24,16 @@ class PagesController < ApplicationController
     #   @total_capacity += item.capacity
     # end 
 
-    total_quantity = 0
-    VendingMachine.all.each do |machine|
-      Item.where(vending_machine_id: machine.id).each do |item|
-          # total_quantity += item.quantity 
+    @vending_machine = VendingMachine.all
+    @total_sum = @vending_machine.map do |machine|
+      items = Item.where(vending_machine_id: machine.id)
+        quantity_items = items.map do |item| 
+          item.quantity
         end 
-      end
+      quantity_items.sum
     end 
+    # total_quantity += item.quantity 
 
-    
-
-
-    
-    @vending_machines = VendingMachine.where(@total_quantity < 150) 
+    @vending_machines = VendingMachine.where(@total_sum < 150) 
   end
 end 
