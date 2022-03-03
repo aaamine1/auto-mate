@@ -3,7 +3,7 @@
   width: 30%;
   display: grid;
   position: absolute;
-  top: 6%;
+
   left: 8%;
   color: white;
   h1 {
@@ -24,7 +24,7 @@
 }
 .background-holder {
   background-color: #f8837b;
-  height: 700px;
+  height: 666px;
   position: relative;
   display: flex;
 
@@ -51,7 +51,7 @@ svg {
   /* set height to pixels if you want angle to change with screen width */
 }
 .about-us {
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
