@@ -1,12 +1,12 @@
 class BookingsController < ApplicationController
     def new
         @booking = Booking.new
-        @venue = Venue.find(params[:vending_machine_id])
+        @vending_machine = VendingMachine.find(params[:id])
     end
 
     def create
-        @booking = Booking.new(booking_params)
-        @vending_machine = VendingMachine.find(params[:vending_machine_id])
+        @booking = Booking.new
+        @vending_machine = VendingMachine.find(params[:id])
         @booking.vending_machine = @vending_machine
         @booking.user = current_user
         # raise
@@ -16,11 +16,5 @@ class BookingsController < ApplicationController
         else
             render :new
         end
-    end
-
-    private 
-
-    def booking_params
-        params.require(:booking).permit(:status, :start_date, :end_date, :venue_id)
     end
 end
