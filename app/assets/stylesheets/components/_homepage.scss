@@ -3,6 +3,7 @@
   width: 30%;
   display: grid;
   position: absolute;
+  top: 6%;
   left: 8%;
   color: white;
   h1 {
@@ -21,39 +22,87 @@
     }
   }
 }
-
 .background-holder {
   background-color: #f8837b;
-  height: 650px;
+  height: 100vh;
   position: relative;
   display: flex;
 
 }
-
-
 .background-image {
   position: absolute;
   right: 10%;
   top: 5%;
 }
-
 body {
   background-color: #fffbed;
 }
-
 .bottom-link-intro {
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
 
 }
-
-
-
 svg {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 10vw;
   /* set height to pixels if you want angle to change with screen width */
+}
+.about-us {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    font-size: 68px;
+    color: white;
+  }
+  h2 {
+    color: white;
+  }
+  p {
+    text-align: center;
+    color: white;
+    opacity: 0.7;
+  }
+  background-color: #212529;
+}
+.service-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 100px;
+  padding: 30px;
+
+}
+.service-card {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    height: 160px;
+    margin-bottom: 30px;
+  }
+}
+
+.intro-refiller {
+  background-color: #f8837b;
+  height: 280px;
+  padding: 35px;
+  h1 {
+    font-size: 56px;
+    color: white;
+    text-align: center;
+  }
+  p {
+    color: white;
+    text-align: center;
+  }
+}
+.join {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

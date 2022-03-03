@@ -5,12 +5,17 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  position: relative;
+  margin: 20px;
+  border-radius: 5px;
+
 }
 
 .card-product img {
   height: 100%;
-  width: 120px;
+  width: 108px;
   object-fit: cover;
+
 }
 
 .card-product h2 {
