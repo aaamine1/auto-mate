@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
   def dashboard_vendor
     @vending_machines = VendingMachine.where(user: current_user)
+    @vm_number = @vending_machines.count
     @products = Product.all
   end
 end
