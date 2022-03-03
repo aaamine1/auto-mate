@@ -7,6 +7,8 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+// Mapbox
+@import "mapbox-gl/dist/mapbox-gl";
 
 // Your CSS partials
 @import "components/index";
@@ -20,5 +22,3 @@
 @import "components/login";
 @import "components/navbar";
 @import "components/vending_machine";
-// Mapbox
-@import "mapbox-gl/dist/mapbox-gl";
