@@ -4,15 +4,12 @@ class PagesController < ApplicationController
   def home
   end
 
-  def dahsboard_vendor
-    @vending_machines = VendingMachine.all do |vending_machine|
-      user_vending_machines = vending_machine.user_id == current_user.id
-      user_vending_machines.find(params[:id])
-    end 
 
+  def dashboard_vendor
+    @vending_machines = VendingMachine.where(user: current_user)
+    @vm_number = @vending_machines.count
     @products = Product.all
-    @product = @products.find(params[vending_machine_id])
-  end 
+  end
 
 
   def dashboard_refiller
@@ -25,3 +22,4 @@ class PagesController < ApplicationController
     @vending_machines =VendingMachine.all
   end
 end 
+
