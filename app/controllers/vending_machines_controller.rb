@@ -5,8 +5,7 @@ class VendingMachinesController < ApplicationController
         @markers = @vending_machines.geocoded.map do |vending_machine|
           {
             lat: vending_machine.latitude,
-            lng: vending_machine.longitude,
-            info_window: render_to_string(partial: "info_window", locals: { vending_machine: vending_machine })
+            lng: vending_machine.longitude
           }
         end
     end
