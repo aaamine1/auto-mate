@@ -40,16 +40,20 @@
   <% end %>
 </div>
 
+
 <div id="my-vm-db" style=" margin-top: 30px" >
         <% @vending_machines.each do |vending_machine|%>
+          <%= link_to vending_machine_path(vending_machine) do %>
             <div class="card-product m-3">
 
               <img src="https://cdn-icons-png.flaticon.com/512/821/821356.png"/>
               <div class="db-card-content">
-                <div class="card-product-infos">
-                  <h2> <%= link_to vending_machine.name, vending_machine_path(vending_machine) %></h2>
-                  <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
-                </div>
+                <%= link_to vending_machine_path(vending_machine) do %>
+                 <div class="card-product-infos">
+                    <h2> <%= vending_machine.name %></h2>
+                    <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
+                  </div>
+                <% end %>
 
                 <div class="crud-btns-db">
                   <%= link_to edit_vending_machine_path(vending_machine), class: "btn mb-2" do %>
@@ -62,5 +66,6 @@
               </div>
 
             </div>
+          <%end %>
         <%end %>
 </div>
