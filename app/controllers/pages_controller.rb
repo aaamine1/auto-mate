@@ -4,11 +4,8 @@ class PagesController < ApplicationController
   def home
   end
 
-  def dahsboard_vendor
-    @vending_machines = VendingMachines.all 
-    @vending_machine = @vending_machines.find(params[:id])
-
-    @products = Products.all
-    @product = @products.find(params[vending_machine_id])
-  end 
+  def dashboard_vendor
+    @vending_machines = VendingMachine.where(user: current_user)
+    @products = Product.all
+  end
 end

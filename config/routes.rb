@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+
   resources :vending_machines do
     resources :bookings, only: [:create]
     resources :items, only: [:index, :new, :create, :edit, :update, ]
@@ -10,5 +11,5 @@ Rails.application.routes.draw do
     resources :bookings, only: [:index, :edit, :update]
   end
   # subject to further validation / conversation with team
-  get '/dashboard_vendor', to: 'pages#dashboard_vendor', as: :dashboard
+  get '/dashboard_vendor', to: 'pages#dashboard_vendor'
 end
