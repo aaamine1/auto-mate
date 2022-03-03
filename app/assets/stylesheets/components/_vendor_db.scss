@@ -7,8 +7,10 @@
 }
 
 .stat-card {
-  // display: grid;
+  display:flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 10px 30px;
   margin: 20px;
   h1 {
