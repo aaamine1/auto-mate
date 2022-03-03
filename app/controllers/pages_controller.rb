@@ -4,7 +4,13 @@ class PagesController < ApplicationController
   def home
   end
 
-  def dashboard_vendor 
+  def dashboard_vendor
+    @vending_machines = VendingMachine.where(user: current_user)
+    @vm_number = @vending_machines.count
+    @products = Product.all
+  end
+  
+  def dashboard
 
     # @vendor_vending_machines = VendingMachine.where(user_id: current_user) 
     # @my_bookings = Booking.where(vending_machine_id: vending_machine_id)
@@ -37,3 +43,4 @@ class PagesController < ApplicationController
     @vending_machines = VendingMachine.where(@total_sum < 150) 
   end
 end 
+

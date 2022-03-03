@@ -1,0 +1,66 @@
+<div class="content">
+  <div class="db-intro">
+    <h1 class="mb-3"> <i class="fa fa-tachometer" aria-hidden="true"></i> My Dashboard</h1>
+
+  </div>
+</div>
+
+
+<div class="content">
+  <div class="stats-db">
+    <div class="stat-card">
+      <p><i class="fa fa-line-chart" aria-hidden="true"></i> Total Income </p>
+      <h1>$10,000</h1>
+      <p>125  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p>
+    </div>
+
+    <div class="stat-card">
+      <p><i class="fa fa-map-marker" aria-hidden="true"></i> Number of Vending Machines</p>
+      <h1>#<%= @vm_number %> </h1>
+      <p></p>
+    </div>
+
+    <div class="stat-card">
+      <p><i class="fa fa-line-chart" aria-hidden="true"></i> Total Income </p>
+      <h1>$10,000 </h1>
+      <p>125  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p>
+    </div>
+    <div class="stat-card">
+      <p><i class="fa fa-line-chart" aria-hidden="true"></i> Total Income </p>
+      <h1>$10,000</h1>
+      <p>125  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="db-v-btns">
+  <%= link_to  new_vending_machine_path, class:"btn-black", id: "new-vm-btn" do %>
+   <i class="fa fa-plus-circle" aria-hidden="true"></i> New Machine
+  <% end %>
+</div>
+
+<div id="my-vm-db" style=" margin-top: 30px" >
+        <% @vending_machines.each do |vending_machine|%>
+            <div class="card-product m-3">
+
+              <img src="https://cdn-icons-png.flaticon.com/512/821/821356.png"/>
+              <div class="db-card-content">
+                <div class="card-product-infos">
+                  <h2> <%= link_to vending_machine.name, vending_machine_path(vending_machine) %></h2>
+                  <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
+                </div>
+
+                <div class="crud-btns-db">
+                  <%= link_to edit_vending_machine_path(vending_machine), class: "btn mb-2" do %>
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <% end %>
+                  <%= link_to vending_machine_path(vending_machine), method: :delete, class: "btn", data: { confirm: 'Are you sure?' } do %>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  <% end %>
+                </div>
+              </div>
+
+            </div>
+        <%end %>
+</div>

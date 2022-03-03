@@ -1,0 +1,39 @@
+.stats-db {
+  background: #dd6860;
+  height: 25vh;
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.stat-card {
+  // display: grid;
+  justify-content: center;
+  padding: 10px 30px;
+  margin: 20px;
+  h1 {
+    color: white;
+  }
+
+  p {
+    color: white;
+    opacity: 0.8;
+  }
+}
+
+.db-intro {
+  margin: 30px;
+
+}
+
+.db-intro {
+  h1 {
+    font-size: 56px;
+    font-weight: bolder;
+    color: #212529;
+  }
+}
+
+.db-v-btns {
+  margin: 30px;
+}
