@@ -1,12 +1,13 @@
 class VendingMachinesController < ApplicationController
     def index
         @vending_machines = VendingMachine.all
-        # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+
         @markers = @vending_machines.geocoded.map do |vending_machine|
-          {
+        {
             lat: vending_machine.latitude,
-            lng: vending_machine.longitude
-          }
+            lng: vending_machine.longitude,
+            info_window: render_to_string(partial: "info_window", locals: { vending_machine: vending_machine })
+        }
         end
     end
 
@@ -48,6 +49,6 @@ class VendingMachinesController < ApplicationController
     private
 
     def vending_machine_params
-        params.require(:vending_machine).permit(:address, :description, :id, :name)
+        params.require(:vending_machine).permit(:address, :description, :id)
     end
 end
