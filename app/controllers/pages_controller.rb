@@ -4,24 +4,38 @@ class PagesController < ApplicationController
   def home
   end
 
-  def dahsboard_vendor
-    @vending_machines = VendingMachine.all do |vending_machine|
-      user_vending_machines = vending_machine.user_id == current_user.id
-      user_vending_machines.find(params[:id])
-    end 
+  def dahsboard 
 
-    @products = Product.all
-    @product = @products.find(params[vending_machine_id])
-  end 
-
-
-  def dashboard_refiller
-
-    @my_bookings = Booking.where(user_id: [User.pluck(:id)]).where('id > ?', 9)
+    @vendor_vending_machines = VendingMachine.where(user_id: current_user) 
+    @my_bookings = Booking.where(vending_machine_id: vending_machine_id)
     # @my_bookings = Booking.all.select do |booking|
     #   booking.user_id == current_user.id
     # end 
 
-    @vending_machines =VendingMachine.all
+    # VendingMachine.all.each do |machine|
+    #   @total_quantity = 0
+    #   machine.Item.all.each do |item|
+    #     @total_quantity += item.quantity
+    #   end 
+    # end 
+
+    # @total_capacity = 0
+    # Item.all.each do |item|
+    #   @total_capacity += item.capacity
+    # end 
+
+    total_quantity = 0
+    VendingMachine.all.each do |machine|
+      Item.where(vending_machine_id: machine.id).each do |item|
+          # total_quantity += item.quantity 
+        end 
+      end
+    end 
+
+    
+
+
+    
+    @vending_machines = VendingMachine.where(@total_quantity < 150) 
   end
 end 
