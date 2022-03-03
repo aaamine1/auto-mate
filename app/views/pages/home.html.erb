@@ -10,25 +10,24 @@
 
     <%# new_user_registration %>
     <div class="bottom-link-intro">
+      <% unless user_signed_in? %>
       <div id="intro-elements-grid">
-        <%= link_to new_user_registration_path(user: "vendor") do%>
-          <i class="fa fa-arrow-right" aria-hidden="true"></i></i> Become a vendor <br>
-        <% end  %>
-        <%= link_to new_user_registration_path(user: "refiller") do%>
-          <i class="fa fa-arrow-right" aria-hidden="true"></i></i> Become a refiller
-        <% end  %>
+          <%= link_to new_user_registration_path(user: "vendor") do%>
+            <i class="fa fa-arrow-right" aria-hidden="true"></i></i> Become a vendor <br>
+          <% end  %>
+          <%= link_to new_user_registration_path(user: "refiller") do%>
+            <i class="fa fa-arrow-right" aria-hidden="true"></i></i> Become a refiller
+          <% end  %>
       </div>
       <div id="intro-elements-grid">
         <a href="#" class="btn-black" id="btn-explore">Explore</a>
       </div>
+      <% end %>
     </div>
-
   </div>
   <div class="background-image">
     <%= image_tag "providerimage.png" %>
   </div>
-
-
 </div>
 
 
@@ -57,6 +56,7 @@
 </div>
 
 <div class="content">
+
   <div class="intro-refiller">
     <h1>Become an Auto-Mate</h1>
     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -66,5 +66,12 @@
     culpa qui officia deserunt mollit anim id est laborum."Section 1.10.32 of "de Finibus Bonorum et Malorum"
     , written by Cicero in 45 BC </p>
     <a href="#" class="btn-black join" style="margin-left:44%; margin-right:44%">Join</a>
+  </div>
+</div>
+
+<div class="content">
+  <div class="intro-wut">
+
+
   </div>
 </div>

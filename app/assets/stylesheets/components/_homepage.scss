@@ -24,7 +24,7 @@
 }
 .background-holder {
   background-color: #f8837b;
-  height: 100vh;
+  height: 700px;
   position: relative;
   display: flex;
 
@@ -55,6 +55,7 @@ svg {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   h1 {
     font-size: 68px;
     color: white;
@@ -105,4 +106,8 @@ svg {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.intro-wut {
+  height: 400px;
 }
