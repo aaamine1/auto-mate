@@ -18,7 +18,6 @@ class PagesController < ApplicationController
 
 
   def dashboard_refiller
-
     # @vendor_vending_machines = VendingMachine.where(user_id: current_user)
     # @my_bookings = Booking.where(vending_machine_id: vending_machine_id)
     # @my_bookings = Booking.all.select do |booking|
