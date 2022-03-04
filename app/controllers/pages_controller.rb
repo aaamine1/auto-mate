@@ -11,8 +11,9 @@ class PagesController < ApplicationController
     # Products
     @products = Product.all
     # Booking management
-    @my_bookings = Bookings.vending_machine_id.user_id.where(user: current_user)
     @booking = Booking.new
+    # @my_bookings = Booking.vending_machine_id.user_id.where(user: current_user)
+
   end
 
   def dashboard
