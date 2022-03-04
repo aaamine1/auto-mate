@@ -50,6 +50,7 @@ class PagesController < ApplicationController
     # @vending_machines = VendingMachine.where(@total_sum < 150)
     @vm_number = @vending_machines.count
     @products = Product.all
+    @booking = Booking.new
 
   end
 end
