@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
   # subject to further validation / conversation with team
   get '/dashboard_vendor', to: 'pages#dashboard_vendor'
+  get '/dashboard_refiller', to: 'pages#dashboard_refiller'
 end
