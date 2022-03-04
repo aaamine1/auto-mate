@@ -16,7 +16,12 @@
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Dashboard", dashboard_vendor_path, class: "nav-link" %>
+            <% if current_user.user_type == 3 %>
+              <%= link_to "Dashboard", dashboard_vendor_path, class: "nav-link" %>
+            <% elsif current_user.user_type == 3  %>
+              <%= link_to "Dashboard", dashboard_refiller_path, class: "nav-link" %>
+            <% else  %>
+            <% end %>
           </li>
           <li class="nav-item">
             <%= link_to "VM Index", vending_machines_path, class: "nav-link" %>
