@@ -24,7 +24,7 @@ class VendingMachinesController < ApplicationController
         @vending_machine = VendingMachine.new(vending_machine_params)
         @vending_machine.user = current_user
         if @vending_machine.save
-          redirect_to vending_machine_path(@vending_machine)
+          redirect_to dashboard_vendor_path(@vending_machine)
         else
           render :new
         end
