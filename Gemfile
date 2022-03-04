@@ -27,9 +27,9 @@ gem "geocoder"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
+gem 'chartkick'
 gem 'devise'
-
+gem 'chart-js-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
 
 gem 'autoprefixer-rails', '10.2.5'
