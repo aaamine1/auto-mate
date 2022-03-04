@@ -14,6 +14,8 @@ class VendingMachinesController < ApplicationController
     def show
         @vending_machine = VendingMachine.find(params[:id])
         @item = Item.new
+        @booking = Booking.new
+
     end
 
     def new
