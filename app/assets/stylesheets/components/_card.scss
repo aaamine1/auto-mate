@@ -10,6 +10,9 @@ a {
   text-decoration: none;
   display: flex;
   align-items: center;
+  position: relative;
+  margin: 20px;
+  border-radius: 5px;
   a {
     text-decoration: none;
   }
@@ -17,8 +20,9 @@ a {
 
 .card-product img {
   height: 100%;
-  width: 120px;
+  width: 108px;
   object-fit: cover;
+
 }
 
 .card-product h2 {

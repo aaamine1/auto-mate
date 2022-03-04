@@ -1,16 +1,16 @@
+<% if @vending_machine.user_id == current_user.id  %>
+  <div class="container my-3" style="width: 500px">
+    <h1> Add an item to your VM: </h1>
+    <%= simple_form_for([@vending_machine, @item]) do |f| %>
+            <%= f.association :product  %>
+            <%= f.input :margin, :label => "Your profit margin" %>
+            <%= f.input :list_price %>
 
-<div class="container my-3" style="width: 500px">
-  <h1> Add an item to your VM: </h1>
-  <%= simple_form_for([@vending_machine, @item]) do |f| %>
-          <%= f.association :product  %>
-          <%= f.input :margin, :label => "Your profit margin" %>
-          <%= f.input :list_price %>
-
-          <%= f.input :capacity, :label => "Max number for this item" %>
-          <%= f.submit "Add a product", class: 'btn' %>
-        <% end %>
-</div>
-
+            <%= f.input :capacity, :label => "Max number for this item" %>
+            <%= f.submit "Add a product", class: 'btn' %>
+          <% end %>
+  </div>
+<% end %>
 <div class="row">
           <% @vending_machine.items.each do |item| %>
            <div class="col-xs-12 col-sm-4 col-sm-offset-1">
