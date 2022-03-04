@@ -13,15 +13,15 @@
 <% end %>
 <div class="row">
           <% @vending_machine.items.each do |item| %>
-           <div class="col-xs-12 col-sm-4 col-sm-offset-1">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">🧃 <strong><%= item.product.name%></strong></h5>
-                <h5> <strong><%= item.list_price %>$</strong></h5>
-                <p class="card-text"><%= item.list_price %></p>
-                <%= link_to "Remove", item_path(item), method: :delete, class: "btn", data: { confirm: "Are you sure you want to remove this item from your vending machine ?" } %>
+            <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">🧃 <strong><%= item.product.name%></strong></h5>
+                  <h5> <strong><%= item.list_price %>$</strong></h5>
+                  <p class="card-text"><%= item.list_price %></p>
+                  <%= link_to "Remove", item_path(item), method: :delete, class: "btn", data: { confirm: "Are you sure you want to remove this item from your vending machine ?" } %>
+                </div>
               </div>
-            </div>
             </div>
           <% end %>
       </div>

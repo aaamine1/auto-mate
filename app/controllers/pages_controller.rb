@@ -5,12 +5,20 @@ class PagesController < ApplicationController
   end
 
   def dashboard_vendor
+    # Vending Machines
     @vending_machines = VendingMachine.where(user: current_user)
     @vm_number = @vending_machines.count
+    # Products
     @products = Product.all
+    # Booking management
+    @booking = Booking.new
+    # @my_bookings = Booking.vending_machine_id.user_id.where(user: current_user)
+
   end
 
+
   def dashboard_refiller
+
     # @vendor_vending_machines = VendingMachine.where(user_id: current_user)
     # @my_bookings = Booking.where(vending_machine_id: vending_machine_id)
     # @my_bookings = Booking.all.select do |booking|
@@ -29,6 +37,7 @@ class PagesController < ApplicationController
     #   @total_capacity += item.capacity
     # end
 
+
     @vending_machines = VendingMachine.all
     # @total_sum = @vending_machines.map do |machine|
     #   items = Item.where(vending_machine_id: machine.id)
@@ -42,5 +51,6 @@ class PagesController < ApplicationController
     # @vending_machines = VendingMachine.where(@total_sum < 150)
     @vm_number = @vending_machines.count
     @products = Product.all
+
   end
 end
