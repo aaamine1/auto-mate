@@ -7,7 +7,7 @@
         @booking.vending_machine = @vending_machine
         @booking.user = current_user
         if @booking.save
-            redirect_to vending_machine_path(@vending_machine), notice: "Booking successful! Tik Tok Tik Tok, time is running out"
+            redirect_to dashboard_refiller_path(@vending_machine), notice: "Booking successful! Tik Tok Tik Tok, time is running out"
         else
             render :new
         end

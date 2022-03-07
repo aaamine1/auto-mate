@@ -21,7 +21,10 @@
              <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
             </div>
             <div>
-              <%= link_to "Book a refill", vending_machine_path(vending_machine), class: "btn", style: "margin-bottom: 10px" %>
+              <%= simple_form_for [vending_machine, @booking] do |f| %>
+                      <%= f.submit "Book for refill", class: 'btn' %>
+                    <% end %>
+              <%# <%= link_to "Book for refill", vending_machines_path(vending_machine), class: "btn", style: "margin-bottom: 10px" %>
             </div>  <%# <%= link_to "manage items", vending_machine_items_path(@vending_machine) %>
 
           </div>

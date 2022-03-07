@@ -19,8 +19,10 @@
                   <h5 class="card-title">🧃 <strong><%= item.product.name%></strong></h5>
                   <h5> <strong><%= item.list_price %>$</strong></h5>
                   <p class="card-text"><%= item.list_price %></p>
-                  <%= link_to "Remove", item_path(item), method: :delete, class: "btn", data: { confirm: "Are you sure you want to remove this item from your vending machine ?" } %>
-                 
+                   <% if current_user.user_type == 3 %>
+                    <%= link_to "Remove", item_path(item), method: :delete, class: "btn", data: { confirm: "Are you sure you want to remove this item from your vending machine ?" } %>
+                  <%else%>
+                  <%end%>
                 </div>
               </div>
             </div>
