@@ -57,20 +57,18 @@
 </div>
 
 
-
 <h2>Ongoing booking</h2>
     <ul>
     <%  %>
     <% @my_bookings = @bookings.each do |booking| %>
             <p>
             <strong><%= booking.vending_machine.name %> </strong>
-            <strong><%= booking.vending_machine.address %> </strong>
-            From: <%= booking.created_at %>
-            To: <%= booking.created_at %>
-            <%= link_to 'Mark booking as complete', accept_booking_path(booking), method: :patch, class: 'btn'  %>
-            <%= link_to 'Mark booking as declined', decline_booking_path(booking), method: :patch, class: 'btn'  %>
+            Address: <strong><%= booking.vending_machine.address %> </strong>
+            <%# From: <%= booking.created_at %>
+            Deadline: <%= Time.now + rand(15..120).minutes %>
+            <%= link_to 'Mark booking as completed', mark_as_complete_booking_path(booking), method: :patch, class: 'btn btn-outline-success m-0'  %>
+            <%= link_to 'Mark booking as declined', mark_as_decline_booking_path(booking), method: :patch, class: 'btn btn-outline-danger m-0'  %>
             </p>
             <br>
-
     <% end %>
     </ul>
