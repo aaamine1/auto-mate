@@ -35,6 +35,7 @@
               <div class="card" style="width: 18rem;">
 
 
+
                   <div class="card-body">
                     <h5 class="card-title">🧃 <strong> Product name: <%= item.product.name%></strong></h5>
                     <h5> <strong> List price: <%= item.list_price %>$</strong></h5>
@@ -43,8 +44,6 @@
                     <%= link_to "Edit", item_path(item), method: :update, class: "btn" %>
                     <%= link_to "Remove", item_path(item), method: :delete, class: "btn", data: { confirm: "Are you sure you want to remove this item from your vending machine ?" } %>
                   </div>
-
-
 
 
               </div>

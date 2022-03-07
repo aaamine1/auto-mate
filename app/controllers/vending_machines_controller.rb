@@ -1,6 +1,7 @@
 class VendingMachinesController < ApplicationController
     def index
         @vending_machines = VendingMachine.all
+        @booking = Booking.new
 
         @markers = @vending_machines.geocoded.map do |vending_machine|
         {
@@ -15,7 +16,6 @@ class VendingMachinesController < ApplicationController
         @vending_machine = VendingMachine.find(params[:id])
         @item = Item.new
         @booking = Booking.new
-
     end
 
     def new
