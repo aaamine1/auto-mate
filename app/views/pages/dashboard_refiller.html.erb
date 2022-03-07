@@ -20,12 +20,12 @@
 
     <div class="stat-card">
       <p><i class="fa fa-line-chart" aria-hidden="true"></i> Ongoing bookings </p>
-      <h1>#<%= Booking.count %> </h1>
+      <h1>#<%= @bookings.count%> </h1>
       <%# <p>3  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p> %>
     </div>
     <div class="stat-card">
       <p><i class="fa fa-line-chart" aria-hidden="true"></i> Potential revenue on current bookings </p>
-      <h1>$10,000</h1>
+      <h1>$<%= %></h1>
       <%# <p>125  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p> %>
     </div>
 
@@ -53,7 +53,6 @@
 
               </div>
 
-            </div>
         <%end %>
 </div>
 
@@ -62,10 +61,10 @@
 <h2>Ongoing booking</h2>
     <ul>
     <%  %>
-    <% @bookings.each do |booking| %>
+    <% @my_bookings = @bookings.each do |booking| %>
             <p>
-            <strong><%= (VendingMachine.find(booking.vending_machine_id)).name %> </strong>
-            <strong><%= (VendingMachine.find(booking.vending_machine_id)).address %> </strong>
+            <strong><%= booking.vending_machine.name %> </strong>
+            <strong><%= booking.vending_machine.address %> </strong>
             From: <%= booking.created_at %>
             To: <%= booking.created_at %>
             <%= link_to 'Mark booking as complete', accept_booking_path(booking), method: :patch, class: 'btn'  %>
