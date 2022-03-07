@@ -52,6 +52,6 @@ class PagesController < ApplicationController
     @products = Product.all
     @booking = Booking.new
 
-    @bookings = current_user.bookings
+    @bookings = current_user.bookings.where(status: "pending")
   end
 end
