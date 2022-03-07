@@ -59,13 +59,18 @@
 
 
 <h2>Ongoing booking</h2>
+    <ul>
     <%  %>
     <% @bookings.each do |booking| %>
-
-            <strong><%= (VendingMachine.find(booking.vending_machine_id)).name VendingMachine.find(booking.vending_machine_id)).address%> </strong>
+            <p>
+            <strong><%= (VendingMachine.find(booking.vending_machine_id)).name %> </strong>
+            <strong><%= (VendingMachine.find(booking.vending_machine_id)).address %> </strong>
             From: <%= booking.created_at %>
             To: <%= booking.created_at %>
-            <%= link_to 'Mark booking as complete', accept_booking_path(booking), method: :patch %>
-            <%= link_to 'Mark booking as declined', decline_booking_path(booking), method: :patch %>
+            <%= link_to 'Mark booking as complete', accept_booking_path(booking), method: :patch, class: 'btn'  %>
+            <%= link_to 'Mark booking as declined', decline_booking_path(booking), method: :patch, class: 'btn'  %>
+            </p>
+            <br>
 
     <% end %>
+    </ul>
