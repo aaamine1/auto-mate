@@ -20,12 +20,12 @@
 
     <div class="stat-card">
       <p><i class="fa fa-line-chart" aria-hidden="true"></i> Ongoing bookings </p>
-      <h1>#<%= Booking.count %> </h1>
+      <h1>#<%= @bookings.count%> </h1>
       <%# <p>3  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p> %>
     </div>
     <div class="stat-card">
       <p><i class="fa fa-line-chart" aria-hidden="true"></i> Potential revenue on current bookings </p>
-      <h1>$10,000</h1>
+      <h1>$<%= %></h1>
       <%# <p>125  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p> %>
     </div>
 
@@ -60,10 +60,10 @@
 <h2>Ongoing booking</h2>
     <ul>
     <%  %>
-    <% @bookings.each do |booking| %>
+    <% @my_bookings = @bookings.each do |booking| %>
             <p>
-            <strong><%= (VendingMachine.find(booking.vending_machine_id)).name %> </strong>
-            Address: <%= (VendingMachine.find(booking.vending_machine_id)).address %>
+            <strong><%= booking.vending_machine.name %> </strong>
+            Address: <strong><%= booking.vending_machine.address %> </strong>
             <%# From: <%= booking.created_at %>
             Deadline: <%= Time.now + rand(15..120).minutes %>
             <%= link_to 'Mark booking as completed', mark_as_complete_booking_path(booking), method: :patch, class: 'btn btn-outline-success m-0'  %>

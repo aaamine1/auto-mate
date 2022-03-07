@@ -90,7 +90,7 @@ svg {
 
 .intro-refiller {
   background-color: #f8837b;
-  height: 280px;
+  height: 400px;
   padding: 35px;
   h1 {
     font-size: 56px;
@@ -110,4 +110,14 @@ svg {
 
 .intro-wut {
   height: 400px;
+}
+
+.intro-refiller h3 {
+  color: white;
+  text-align: center;
+}
+
+.intro-refiller {
+ align-items: center;
+ height: 50%;
 }
