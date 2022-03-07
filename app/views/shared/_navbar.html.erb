@@ -16,9 +16,9 @@
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <% if current_user.user_type == 3 %>
+            <% if current_user.is_vendor? %>
               <%= link_to "Dashboard", dashboard_vendor_path, class: "nav-link" %>
-            <% elsif current_user.user_type == 2 %>
+            <% elsif current_user.is_refiller? %>
               <%= link_to "Dashboard", dashboard_refiller_path, class: "nav-link" %>
             <% else  %>
             <% end %>

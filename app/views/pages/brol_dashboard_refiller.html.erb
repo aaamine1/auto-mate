@@ -1,0 +1,16 @@
+
+
+
+
+<h2>Ongoing booking</h2>
+    <%  %>
+    <% @bookings.each do |booking| %>
+
+            <strong><%= (VendingMachine.find(booking.vending_machine_id)).name VendingMachine.find(booking.vending_machine_id)).address%> </strong>
+            From: <%= booking.created_at %>
+            To: <%= booking.created_at %>
+            <%= link_to 'Mark booking as complete', accept_booking_path(booking), method: :patch, class: "btn btn-outline-success m-0" %>
+            <%= link_to 'Mark booking as declined', decline_booking_path(booking), method: :patch, class: "btn btn-outline-danger m-0" %>
+
+    <% end %>
+
