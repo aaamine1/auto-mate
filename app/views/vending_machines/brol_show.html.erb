@@ -1,0 +1,18 @@
+
+
+              <% if current_user.is_vendor? and @vending_machine.user_id == current_user.id %>
+
+              <% elsif current_user.is_refiller? %>
+
+                  <div class="card-body">
+                    <h5 class="card-title">🧃 <strong> Product name: <%= item.product.name%></strong></h5>
+                    <h5> <strong> List price: <%= item.list_price %>$</strong></h5>
+                    <p class="card-text"> Margin: <%= item.margin %>%</p>
+                    <p class="card-text"> Quantity/Capacity: <%= item.quantity %>/<%= item.capacity %> </p>
+
+                  </div>
+
+
+              <% else  %>
+              <% end %  >
+

@@ -52,5 +52,7 @@ class PagesController < ApplicationController
     @products = Product.all
     @booking = Booking.new
 
+    @bookings = Booking.where(user: current_user)
+
   end
 end

@@ -12,4 +12,14 @@
             render :new
         end
     end
+
+    def mark_as_complete
+      @booking = Booking.find(params[:id])
+      @booking.update(status: 'completed')
+      redirect_to dashboard_refiller_path
+    end
+
+    def mark_as_declined
+      
+    end
 end
