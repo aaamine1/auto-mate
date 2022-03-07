@@ -34,11 +34,6 @@
   </div>
 </div>
 
-<div class="db-v-btns">
-  <%= link_to  new_vending_machine_path, class:"btn-black", id: "new-vm-btn" do %>
-   <i class="fa fa-plus-circle" aria-hidden="true"></i> New Machine
-  <% end %>
-</div>
 
 <div id="my-vm-db" style=" margin-top: 30px" >
         <% @vending_machines.each do |vending_machine|%>
@@ -51,19 +46,31 @@
                   <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
                 </div>
 
-                <div class="crud-btns-db">
-                  <%= link_to edit_vending_machine_path(vending_machine), class: "btn mb-2" do %>
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                  <% end %>
-                  <%= link_to vending_machine_path(vending_machine), method: :delete, class: "btn", data: { confirm: 'Are you sure?' } do %>
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                  <% end %>
-                </div>
-              </div>
-
               <%= simple_form_for [vending_machine, @booking] do |f| %>
                       <%= f.submit "Make booking", class: 'btn' %>
                     <% end %>
+
               </div>
+
+            </div>
         <%end %>
 </div>
+
+
+
+<h2>Ongoing booking</h2>
+    <ul>
+    <%  %>
+    <% @bookings.each do |booking| %>
+            <p>
+            <strong><%= (VendingMachine.find(booking.vending_machine_id)).name %> </strong>
+            <strong><%= (VendingMachine.find(booking.vending_machine_id)).address %> </strong>
+            From: <%= booking.created_at %>
+            To: <%= booking.created_at %>
+            <%= link_to 'Mark booking as complete', accept_booking_path(booking), method: :patch, class: 'btn'  %>
+            <%= link_to 'Mark booking as declined', decline_booking_path(booking), method: :patch, class: 'btn'  %>
+            </p>
+            <br>
+
+    <% end %>
+    </ul>
