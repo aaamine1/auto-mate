@@ -21,10 +21,16 @@
              <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
             </div>
             <div>
-              <%= simple_form_for [vending_machine, @booking] do |f| %>
-                      <%= f.submit "Book for refill", class: 'btn' %>
-                    <% end %>
-              <%# <%= link_to "Book for refill", vending_machines_path(vending_machine), class: "btn", style: "margin-bottom: 10px" %>
+            <% if current_user.is_refiller? %>
+              <% if vending_machine.bookings.any? { |booking| booking.status == "pending" } %>
+                <p> Ongoing Booking </p>
+              <% else %>
+                  <%= simple_form_for [vending_machine, @booking] do |f| %>
+                          <%= f.submit "Book for refill", class: 'btn' %>
+                  <% end %>
+              <% end %>
+            <% end %>
+            <%# <%= link_to "Book for refill", vending_machines_path(vending_machine), class: "btn", style: "margin-bottom: 10px" %>
             </div>  <%# <%= link_to "manage items", vending_machine_items_path(@vending_machine) %>
 
           </div>
