@@ -35,8 +35,6 @@ class PagesController < ApplicationController
     # Item.all.each do |item|
     #   @total_capacity += item.capacity
     # end
-
-
     @vending_machines = VendingMachine.all
     # @total_sum = @vending_machines.map do |machine|
     #   items = Item.where(vending_machine_id: machine.id)
@@ -52,6 +50,6 @@ class PagesController < ApplicationController
     @products = Product.all
     @booking = Booking.new
 
-    @bookings = current_user.bookings
+    @bookings = current_user.bookings.where(status: "pending")
   end
 end

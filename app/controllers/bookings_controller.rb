@@ -16,12 +16,14 @@
     def complete
       @booking = Booking.find(params[:id])
       @booking.update(status: 'completed')
-      redirect_to dashboard_refiller_path, notice: "Booking complete !"
+
+      redirect_to dashboard_refiller_path,  notice: "Booking completed!"
     end
 
     def decline
       @booking = Booking.find(params[:id])
       @booking.update(status: 'declined')
-      redirect_to dashboard_refiller_path, notice: "Booking declined !"
+
+      redirect_to dashboard_refiller_path, notice: "Booking declined!"
     end
 end
