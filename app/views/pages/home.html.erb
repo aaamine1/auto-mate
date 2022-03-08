@@ -58,13 +58,15 @@
 <div class="content">
 
   <div class="intro-refiller">
-    <div>
       <h1>Become a partner !</h1>
       <h3> Create an account and decide whether you want to manage machines our refill them.  </h3>
       <h3>Our network of refillers will make sure that your machines never run low on stock. </h3>
-    </div>
+       <% unless user_signed_in? %>
+          <%= link_to "Sign up", new_user_registration_path, class: "btn-black mt-2" %>
+        <%end%>
   </div>
 </div>
+
 
 <div class="content">
 
