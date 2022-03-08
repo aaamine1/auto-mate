@@ -25,13 +25,12 @@ export default class extends Controller {
 
       const element = document.createElement("div");
       element.className = "marker";
-      element.style.backgroundColor = 'blue';
-      element.style.backgroundSize = "contain";
-      element.style.borderRadius = "50%";
-      element.style.width = "25px";
-      element.style.height = "25px";
-      element.style.backgroundImage = "automate-logo.png"
 
+      element.style.backgroundSize = "cover";
+      element.style.borderRadius = "50%";
+      element.style.width = "35px";
+      element.style.height = "35px";
+      element.style.backgroundImage = `url('${marker.image_url}')`;
       new mapboxgl.Marker(element)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)

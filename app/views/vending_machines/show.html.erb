@@ -15,6 +15,8 @@
                   </div>
                 </div>
                 <h1 style="text-align:center" class="m-3">Your Vending Machine's Stock</h1>
+                <h2 style="text-align:center" class="m-3"><strong><%= @vending_machine.name %></strong></h2>
+                <p style="text-align:center" class="m-3">📍<%= @vending_machine.address %></p>
                 <div class="row">
                       <% @vending_machine.items.each do |item| %>
                         <div class="col-xs-12 col-sm-4 ">

@@ -7,7 +7,8 @@ class VendingMachinesController < ApplicationController
         {
             lat: vending_machine.latitude,
             lng: vending_machine.longitude,
-            info_window: render_to_string(partial: "info_window", locals: { vending_machine: vending_machine })
+            info_window: render_to_string(partial: "info_window", locals: { vending_machine: vending_machine }),
+            image_url: helpers.asset_url("automate-logo.png")
         }
         end
     end
@@ -41,6 +42,8 @@ class VendingMachinesController < ApplicationController
         @vending_machine.update(vending_machine_params)
         redirect_to vending_machine_path(@vending_machine)
     end
+
+
 
     def destroy
         @vending_machine = VendingMachine.find(params[:id])
