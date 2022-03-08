@@ -35,8 +35,6 @@ class PagesController < ApplicationController
     # Item.all.each do |item|
     #   @total_capacity += item.capacity
     # end
-
-
     @vending_machines = VendingMachine.all
     # @total_sum = @vending_machines.map do |machine|
     #   items = Item.where(vending_machine_id: machine.id)
