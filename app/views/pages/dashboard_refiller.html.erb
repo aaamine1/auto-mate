@@ -32,46 +32,52 @@
   </div>
 </div>
 
+<div class="db-content">
+  <div id="my-vm-db"  >
+        <div class="list-vm">
+          <h1 class="ml-3"> <i class="fa fa-map-marker" aria-hidden="true" style="color:#f8837b"></i> Auto-Mates to be stocked</p> </h1>
 
-<div id="my-vm-db" style=" margin-top: 30px" >
-      <div class="list-vm">
-      <h1 class="ml-3"> Auto-Mates running low in stock..</h1>
-       <% @vending_machines.each do |vending_machine|%>
-            <div class="card-product m-3">
-              <img src="https://cdn-icons-png.flaticon.com/512/821/821356.png"/>
-              <div class="db-card-content">
-                <div class="card-product-infos">
-                  <h2> <%= link_to vending_machine.name, vending_machine_path(vending_machine) %></h2>
-                  <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
-                </div>
-              </div>
+          <% @vending_machines.each do |vending_machine|%>
+                <% if vending_machine.bookings.none?{|booking| booking.status == "pending"}%>
+                  <div class="card-product m-3">
+                    <img src="https://cdn-icons-png.flaticon.com/512/821/821356.png"/>
+                    <div class="db-card-content">
+                      <div class="card-product-infos">
+                        <h2> <%= link_to vending_machine.name, vending_machine_path(vending_machine) %></h2>
+                        <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
+                      </div>
+                    </div>
 
-              <% if vending_machine.bookings.any? { |booking| booking.status == "pending" } %>
-                <p> Ongoing Booking </p>
-              <% else %>
-                <%= simple_form_for [vending_machine, @booking] do |f| %>
-                        <%= f.submit "Book for refill", class: 'btn' %>
-                <% end %>
-              <% end %>
+                    <% if vending_machine.bookings.any? { |booking| booking.status == "pending" } %>
+                      <p> Ongoing Booking </p>
+                    <% else %>
+                      <%= simple_form_for [vending_machine, @booking] do |f| %>
+                              <%= f.submit "Book for refill", class: 'btn m-3' %>
+                      <% end %>
+                    <% end %>
+                    </div>
+                <%end %>
+          <% end %>
+        </div>
+  </div>
+        <div class="list-booking">
+          <h1 class="my-bookings ml-3"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> My Bookings</h1>
 
-              </div>
-        <%end %>
-      </div>
+            <% @my_bookings = @bookings.each do |booking| %>
+            <div class="booking-card">
+                <h2> <strong><%= booking.vending_machine.name %> </strong> </h2>
+                <p> Address: <strong><%= booking.vending_machine.address %> </strong> </p>
+                <p> ⏳Deadline: <%= Time.now + rand(15..120).minutes %></p>
 
-      <div class="list-vm">
-<h2>Ongoing booking</h2>
-    <ul>
-    <% @my_bookings = @bookings.each do |booking| %>
-            <p>
-            <strong><%= booking.vending_machine.name %> </strong>
-            Address: <strong><%= booking.vending_machine.address %> </strong>
-            <%# From: <%= booking.created_at %>
-            Deadline: <%= Time.now + rand(15..120).minutes %>
-            <%= link_to 'Mark booking as completed', mark_as_complete_booking_path(booking), method: :patch, class: 'btn btn-outline-success m-0'  %>
-            <%= link_to 'Mark booking as declined', mark_as_decline_booking_path(booking), method: :patch, class: 'btn btn-outline-danger m-0'  %>
-            </p>
-            <br>
-    <% end %>
-    </ul>
-      </div>
+                <%= link_to 'Mark booking as completed', mark_as_complete_booking_path(booking), method: :patch, class: 'btn '  %>
+                <%= link_to 'Mark booking as cancelled', mark_as_decline_booking_path(booking), method: :patch, class: 'btn-black'  %>
+                </p>
+                <br>
+            </div>
+            <% end %>
+
+        </div>
+    </div>
+  </div>
+  </div>
 </div>
