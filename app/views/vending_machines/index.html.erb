@@ -11,25 +11,25 @@
 <div class="">
   <div class="index-view d-flex justify-content-between">
     <div class="all-vm" style=" margin-top: 30px" >
-      <h1> Find an Auto-mate near you ! </h1>
+      <h1> Find an Auto-Mate near you ! </h1>
           <% @vending_machines.each do |vending_machine|%>
           <div class="vm-listing d-flex flex-direction-row justify-content-between" style="padding: 10px">
-            <div id="card-index">
+            <div id="card-index" class="">
               <p style="margin-bottom: 20px">
               <%= link_to vending_machine.name, vending_machine_path(vending_machine) %>
               </p>
               <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
             </div>
-            <div>
-            <% if current_user.is_refiller? %>
-              <% if vending_machine.bookings.any? { |booking| booking.status == "pending" } %>
-                <p> Ongoing Booking </p>
-              <% else %>
-                  <%= simple_form_for [vending_machine, @booking] do |f| %>
-                          <%= f.submit "Book for refill", class: 'btn' %>
+            <div class="vm-listing-button d-flex justify-content-around">
+                <% if current_user.is_refiller? %>
+                  <% if vending_machine.bookings.any? { |booking| booking.status == "pending" } %>
+                    <p> Ongoing Booking </p>
+                  <% else %>
+                      <%= simple_form_for [vending_machine, @booking] do |f| %>
+                              <%= f.submit "Book for refill", class: 'btn' %>
+                      <% end %>
                   <% end %>
-              <% end %>
-            <% end %>
+                <% end %>
             <%# <%= link_to "Book for refill", vending_machines_path(vending_machine), class: "btn", style: "margin-bottom: 10px" %>
             </div>  <%# <%= link_to "manage items", vending_machine_items_path(@vending_machine) %>
 
