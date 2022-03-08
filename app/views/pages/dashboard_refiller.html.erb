@@ -34,11 +34,10 @@
 
 
 <div id="my-vm-db" style=" margin-top: 30px" >
- <h1 class="ml-3"> Auto-Mates running low in stock..</h1>
-
-        <% @vending_machines.each do |vending_machine|%>
+      <div class="list-vm">
+      <h1 class="ml-3"> Auto-Mates running low in stock..</h1>
+       <% @vending_machines.each do |vending_machine|%>
             <div class="card-product m-3">
-
               <img src="https://cdn-icons-png.flaticon.com/512/821/821356.png"/>
               <div class="db-card-content">
                 <div class="card-product-infos">
@@ -46,6 +45,11 @@
                   <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
                 </div>
               </div>
+
+              <%= simple_form_for [vending_machine, @booking] do |f| %>
+                      <%= f.submit "Book for refill", class: 'btn' %>
+                    <% end %>
+
               <% if vending_machine.bookings.any? { |booking| booking.status == "pending" } %>
                 <p> Ongoing Booking </p>
               <% else %>
@@ -53,15 +57,14 @@
                         <%= f.submit "Book for refill", class: 'btn' %>
                 <% end %>
               <% end %>
+
               </div>
-
         <%end %>
-</div>
+      </div>
 
-
+      <div class="list-vm">
 <h2>Ongoing booking</h2>
     <ul>
-    <%  %>
     <% @my_bookings = @bookings.each do |booking| %>
             <p>
             <strong><%= booking.vending_machine.name %> </strong>
@@ -74,3 +77,6 @@
             <br>
     <% end %>
     </ul>
+      </div>
+</div>
+
