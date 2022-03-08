@@ -66,8 +66,8 @@
             Address: <strong><%= booking.vending_machine.address %> </strong>
             <%# From: <%= booking.created_at %>
             Deadline: <%= Time.now + rand(15..120).minutes %>
-            <%= link_to 'Mark booking as completed', mark_as_complete_booking_path(booking), method: :patch, class: 'btn btn-outline-success m-0'  %>
-            <%= link_to 'Mark booking as declined', mark_as_decline_booking_path(booking), method: :patch, class: 'btn btn-outline-danger m-0'  %>
+            <%= link_to 'Mark booking as completed', mark_as_complete_booking_path(booking), method: :patch, notice: "Booking has been completed successfully!", class: 'btn btn-outline-success m-0'  %>
+            <%= link_to 'Mark booking as declined', mark_as_decline_booking_path(booking), method: :patch, notice: "Booking has been declined!", class: 'btn btn-outline-danger m-0'  %>
             </p>
             <br>
     <% end %>

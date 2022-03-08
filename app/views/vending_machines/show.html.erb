@@ -20,34 +20,52 @@
                     <i class="fa fa-trash" aria-hidden="true"></i>
                   <% end %>
                 </div>
+
+                <div class="row">
+                      <% @vending_machine.items.each do |item| %>
+                        <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+                          <div class="card" style="width: 18rem;">
+
+                              <div class="card-body">
+                                <h5 class="card-title">🧃 <strong> Product name: <%= item.product.name%></strong></h5>
+                                <h5> <strong> List price: <%= item.list_price %>$</strong></h5>
+                                <p class="card-text"> Margin: <%= item.margin %>%</p>
+                                <p class="card-text"> Quantity/Capacity: <%= item.quantity %>/<%= item.capacity %> </p>
+                                <%= link_to "Edit", item_path(item), method: :update, class: "btn" %>
+                                <%= link_to "Remove", item_path(item), method: :delete, class: "btn", data: { confirm: "Are you sure you want to remove this item from your vending machine ?" } %>
+                              </div>
+
+                          </div>
+                        </div>
+                      <% end %>
+                  </div>
+                </div>
+
             <% elsif current_user.is_refiller? %>
-              <%= simple_form_for [@vending_machine, @booking] do |f| %>
-                      <%= f.submit "Make booking", class: 'btn' %>
-                    <% end %>
+                <%= simple_form_for [@vending_machine, @booking] do |f| %>
+                        <%= f.submit "Make booking", class: 'btn' %>
+                      <% end %>
+
+                <div class="row">
+                      <% @vending_machine.items.each do |item| %>
+                        <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+                          <div class="card" style="width: 18rem;">
+
+                              <div class="card-body">
+                                <h5 class="card-title">🧃 <strong> Product name: <%= item.product.name%></strong></h5>
+                                <h5> <strong> Max. Cost: <%= item.list_price * (100-item.margin) / 100 %>$</strong></h5>
+                                <p class="card-text"> Quantity/Capacity: <%= item.quantity %>/<%= item.capacity %> </p>
+
+                                <%= simple_form_for [@vending_machine, @booking] do |f| %>
+                                  <%= f.submit "Make booking", class: 'btn' %>
+                                <% end %>
+                              </div>
+
+                          </div>
+                        </div>
+                      <% end %>
+                  </div>
+                </div>
 
             <% else  %>
             <% end %>
-
-
-    <div class="row">
-          <% @vending_machine.items.each do |item| %>
-            <div class="col-xs-12 col-sm-4 col-sm-offset-1">
-              <div class="card" style="width: 18rem;">
-
-
-
-                  <div class="card-body">
-                    <h5 class="card-title">🧃 <strong> Product name: <%= item.product.name%></strong></h5>
-                    <h5> <strong> List price: <%= item.list_price %>$</strong></h5>
-                    <p class="card-text"> Margin: <%= item.margin %>%</p>
-                    <p class="card-text"> Quantity/Capacity: <%= item.quantity %>/<%= item.capacity %> </p>
-                    <%= link_to "Edit", item_path(item), method: :update, class: "btn" %>
-                    <%= link_to "Remove", item_path(item), method: :delete, class: "btn", data: { confirm: "Are you sure you want to remove this item from your vending machine ?" } %>
-                  </div>
-
-
-              </div>
-            </div>
-          <% end %>
-      </div>
-    </div>
