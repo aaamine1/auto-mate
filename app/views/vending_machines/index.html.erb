@@ -18,7 +18,7 @@
               <p style="margin-bottom: 20px">
               <%= link_to vending_machine.name, vending_machine_path(vending_machine) %>
               </p>
-             <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
+              <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
             </div>
             <div>
             <% if current_user.is_refiller? %>

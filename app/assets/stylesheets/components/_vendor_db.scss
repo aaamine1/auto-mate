@@ -43,6 +43,7 @@
 .db-content {
   display: flex;
 
+
 }
 
 .analytics-db-v {
@@ -54,4 +55,10 @@
 
 .charts {
   width: 25vw;
+}
+
+#my-vm-db {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
