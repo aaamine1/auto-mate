@@ -22,7 +22,17 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window);
-      new mapboxgl.Marker()
+
+      const element = document.createElement("div");
+      element.className = "marker";
+      element.style.backgroundColor = 'blue';
+      element.style.backgroundSize = "contain";
+      element.style.borderRadius = "50%";
+      element.style.width = "25px";
+      element.style.height = "25px";
+      element.style.backgroundImage = "automate-logo.png"
+
+      new mapboxgl.Marker(element)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)
