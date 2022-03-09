@@ -83,7 +83,7 @@ Product.create!(category: "technology", name: "Pure Air Go battery charged")
 Product.create!(category: "technology", name: "Matrix E-Bike D8 ProS battery charged")
 
 
-20.times do
+50.times do
   this_product = Product.all.sample
   if this_product.category == "technology"
     this_price = 90
@@ -100,15 +100,23 @@ Product.create!(category: "technology", name: "Matrix E-Bike D8 ProS battery cha
    )
 end
 
-10.times do
+3.times do
   start = Date.today + rand(0..2).day
   Booking.create!(
     status: "pending",
-    user: User.all.sample,
+    user: refiller1,
     vending_machine: VendingMachine.all.sample
    )
 end
 
+15.times do
+  start = Date.today + rand(0..2).day
+  Booking.create!(
+    status: "completed",
+    user: refiller1,
+    vending_machine: VendingMachine.all.sample
+   )
+end
 
 # 10.times do Venue.create(
 #   name: Faker::Space.planet,
