@@ -23,8 +23,8 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @vending_machine = VendingMachine.find(params[:vending_machine_id])
-    raise
-    if @item.save
+    # raise
+    if @item.update(item_params)
       redirect_to vending_machine_path(@vending_machine), notice: "Your product was successfully changed!"
     else
       render :edit
@@ -44,6 +44,4 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:list_price, :margin, :capacity, :vending_machine_id, :product_id, :quantity)
   end
-
-
 end
