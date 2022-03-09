@@ -1,0 +1,5 @@
+meta_product_name: "AutoMate"
+meta_title: "AutoMate - We make sure your vending machines stay stocked!"
+meta_description: "Join us today for a streamlined solution to make sure your vending machines stay filled year round."
+meta_image: "automate-logo.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
