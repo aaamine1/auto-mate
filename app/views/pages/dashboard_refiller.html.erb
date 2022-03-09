@@ -1,6 +1,6 @@
 <div class="content">
   <div class="db-intro">
-    <h1 class="mb-3"> <i class="fa fa-tachometer" aria-hidden="true"></i> My Dashboard</h1>
+    <h1 class="mb-3"> <i class="fa fa-tachometer" aria-hidden="true"></i> My Dashboard as a Refiller</h1>
 
   </div>
 </div>
@@ -9,22 +9,22 @@
 <div class="content">
   <div class="stats-db">
     <div class="stat-card">
-      <p><i class="fa fa-line-chart" aria-hidden="true"></i> You profile  </p>
+      <p><i class="fa fa-user-circle" aria-hidden="true"></i> Your profile  </p>
       <h1>Refiller</h1>
     </div>
 
     <div class="stat-card">
-      <p><i class="fa fa-map-marker" aria-hidden="true"></i> Total completed bookings</p>
+      <p><i class="fa fa-check" aria-hidden="true"></i> Total completed refills</p>
       <h1>#<%= Booking.count %> </h1>
     </div>
 
     <div class="stat-card">
-      <p><i class="fa fa-line-chart" aria-hidden="true"></i> Ongoing bookings </p>
-      <h1>#<%= @bookings.count%> </h1>
+      <p><i class="fa fa-clock-o" aria-hidden="true"></i> Ongoing Refills </p>
+      <h1>#<%= (@bookings.where(status: "completed")).count%> </h1>
       <%# <p>3  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p> %>
     </div>
     <div class="stat-card">
-      <p><i class="fa fa-line-chart" aria-hidden="true"></i> Potential revenue on current bookings </p>
+      <p><i class="fa fa-line-chart" aria-hidden="true"></i> Potential revenue on current refills </p>
       <h1>$<%= %></h1>
       <%# <p>125  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p> %>
     </div>
@@ -61,7 +61,7 @@
         </div>
   </div>
   <div class="list-booking">
-          <h1 class="my-bookings ml-3"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> My Bookings</h1>
+          <h1 class="my-bookings ml-3"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> My Booked Refills</h1>
 
             <% @my_bookings = @bookings.each do |booking| %>
             <div class="booking-card">

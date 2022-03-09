@@ -1,6 +1,6 @@
 <div class="content">
   <div class="db-intro">
-    <h1 class="mb-3"> <i class="fa fa-tachometer" aria-hidden="true"></i> My Dashboard</h1>
+    <h1 class="mb-3"> <i class="fa fa-tachometer" aria-hidden="true"></i> My Dashboard as a Vendor</h1>
 
   </div>
 </div>
@@ -60,7 +60,11 @@
 <div class="db-content" style="margin-top: 50px">
   <div id="my-vm-db" style="" >
     <h1 class="ml-3 db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-map-marker" aria-hidden="true" style="color:#f8837b"></i> My Auto-Mates  </h1>
-
+     <div class="db-v-btns d-flex justify-content-center">
+      <%= link_to  new_vending_machine_path, class:"btn-black", id: "new-vm-btn" do %>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i> New Auto-Mate
+      <% end %>
+      </div>
         <% @vending_machines.each do |vending_machine|%>
             <div class="card-product">
               <img src="https://cdn-icons-png.flaticon.com/512/821/821356.png"/>
@@ -82,11 +86,6 @@
 
             </div>
         <%end %>
-        <div class="db-v-btns d-flex justify-content-center">
-          <%= link_to  new_vending_machine_path, class:"btn-black", id: "new-vm-btn" do %>
-            <i class="fa fa-plus-circle" aria-hidden="true"></i> New Auto-Mate
-          <% end %>
-        </div>
   </div>
   <div class="list-booking">
           <h1 class="db-header ml-3" style="text-align:center; font-weight:bolder"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> Ongoing Refills</h1>
