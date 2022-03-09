@@ -4,6 +4,11 @@ class Item < ApplicationRecord
 
   before_save :default_item_quantity
 
+  validates :product, presence: true
+  validates :list_price, presence: true
+  validates :margin, presence: true
+  validates :quantity, presence: true
+
   def default_item_quantity
     self.quantity ||= 0
   end

@@ -1,16 +1,14 @@
 
 
-                <%# <div class="crud-btns-db"> %>
-                <%#  <div class="container my-3" style="width: 500px"> %>
+                <div class="crud-btns-db">
+                  <div class="container my-3" style="width: 500px">
                     <h1> Change this item in your VM: </h1>
                     <%= simple_form_for([@vending_machine, @item]) do |f| %>
                             <%= f.association :product  %>
-                            <%= f.input :margin, :label => "Your profit margin" %>
-                            <%= f.input :list_price %>
-
+                            <%= f.input :margin, :label => "Your profit margin (%)" %>
+                            <%= f.input :list_price, :label => "List price (€)" %>
                             <%= f.input :capacity, :label => "Max number for this item in your machine" %>
                             <%= f.submit "Change this product", class: 'btn' %>
                           <% end %>
-
-              <%#    </div> %>
-              <%#  </div> %>
+                  </div>
+                </div>
