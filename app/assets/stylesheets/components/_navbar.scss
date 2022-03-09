@@ -19,4 +19,11 @@
 
 .nav-link {
   color:white !important;
+    &:hover {
+      color: #F9837B !important;
+    }
+}
+
+.nav-item img {
+  margin-left: 10px;
 }
