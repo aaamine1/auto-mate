@@ -45,7 +45,7 @@ class VendingMachinesController < ApplicationController
     def destroy
         @vending_machine = VendingMachine.find(params[:id])
         @vending_machine.destroy
-        redirect_to vending_machines_path
+        redirect_to dashboard_vendor_path
     end
 
     private
