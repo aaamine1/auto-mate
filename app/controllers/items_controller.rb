@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to vending_machine_path(@vending_machine), notice: "Your product was successfully added!"
     else
-      render :new
+      render "vending_machines/show"
     end
   end
 
