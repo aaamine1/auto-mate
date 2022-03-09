@@ -12,7 +12,7 @@ class PagesController < ApplicationController
     @products = Product.all
     # Booking management
     @booking = Booking.new
-    @bookings = @vending_machines.flat_map { |vm| vm.bookings.where(status: "pending") }
+    @bookings = @vending_machines.map { |vm| vm.bookings.where(status: "pending") }
   end
 
 
