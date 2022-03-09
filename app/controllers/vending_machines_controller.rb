@@ -7,7 +7,8 @@ class VendingMachinesController < ApplicationController
         {
             lat: vending_machine.latitude,
             lng: vending_machine.longitude,
-            info_window: render_to_string(partial: "info_window", locals: { vending_machine: vending_machine })
+            info_window: render_to_string(partial: "info_window", locals: { vending_machine: vending_machine }),
+            image_url: helpers.asset_url("automate-logo.png")
         }
         end
     end
