@@ -12,14 +12,16 @@
                                 <p class="card-text"> <strong>Profit margin:</strong>  <%= item.margin %>%</p>
                                 <p class="card-text"> <strong>Stock:</strong> <%= item.quantity %>/<%= item.capacity %> </p>
                                 <% if  @vending_machine.user_id == current_user.id  %>
-                                <%= link_to "Edit", item_path(item), method: :update, class: "btn" %>
+                                <%= link_to "Edit", edit_vending_machine_item_path(@vending_machine, item), class: "btn" %>
                                 <%= link_to "Remove", item_path(item), method: :delete, class: "btn", data: { confirm: "Are you sure you want to remove this item from your vending machine ?" } %>
                                 <% end %>
-                                <% if current_user.is_refiller? %>
-                                  <%= simple_form_for [@vending_machine, @booking] do |f| %>
-                                    <%= f.submit "Make booking", class: 'btn' %>
-                                  <% end %>
-                                <% end %>
+                                <%# commented out for demo purposes - start %>
+                                <%# if current_user.is_refiller? %>
+                                  <%#= simple_form_for [@vending_machine, @booking] do |f| %>
+                                    <%#= f.submit "Make booking", class: 'btn' %>
+                                  <%# end %>
+                                <%# end %>
+                                <%# commented out for demo purposes - end %>
                               </div>
                           </div>
                         </div>
