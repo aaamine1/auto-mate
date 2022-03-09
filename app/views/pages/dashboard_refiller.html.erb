@@ -67,8 +67,8 @@
             <div class="booking-card">
                 <h2> <strong><%= booking.vending_machine.name %> </strong> </h2>
                 <p> Address: <strong><%= booking.vending_machine.address %> </strong> | <%= booking.vending_machine.description %> </p>
-                <p> ⏳Deadline: <%= Time.now + rand(15..120).minutes %></p>
-
+                <%# <p> ⏳Deadline: <%= Time.now + rand(15..120).minutes %> <%# </p>  %>
+                <p> ⏳Deadline: <%= booking.created_at + 120.minutes %></p>
                 <%= link_to 'Mark booking as completed', mark_as_complete_booking_path(booking), method: :patch, class: 'btn '  %>
                 <%= link_to 'Mark booking as cancelled', mark_as_decline_booking_path(booking), method: :patch, class: 'btn-black'  %>
                 </p>
