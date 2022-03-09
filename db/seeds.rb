@@ -15,27 +15,35 @@ Booking.destroy_all
 VendingMachine.destroy_all
 User.destroy_all
 
-addresses = ["Anneessens, 1000 Brussels", "Rue Van Artevelde 45, 1000 Bruxelles",
-  "DE SINGEL, Desguinlei, Antwerpen ",
-  "BOURLA SCHOUWBURG, Komedieplaats, Antwerp",
-  "Bd Emile de Laveleye 191, 4020 Liège",
-  "Rue Méan 27, 4020 Liège",
-  "Rue Roture 13, 4020 Liège",
-  "50 Bd Voltaire, 75011 Paris, France",
-  "120 Blvd Marguerite de Rochechouart, 75018 Paris, France",
-  "211 Av. Jean Jaurès, 75019 Paris, France",
-  "Brabantlaan 1, 3001 Leuven",
-  "Martelarenplein 12, 3000 Leuven",
-  "Hurstweg 8, 9000 Gent",
-  "Emile Braunplein 39, 9000 Gent",
-  "Ancienne Belgique, Boulevard Anspach, Brussels", "16 Villa Gaudelet, Paris"]
+# addresses = ["Anneessens, 1000 Brussels", "Rue Van Artevelde 45, 1000 Bruxelles",
+#   "DE SINGEL, Desguinlei, Antwerpen ",
+#   "BOURLA SCHOUWBURG, Komedieplaats, Antwerp",
+#   "Bd Emile de Laveleye 191, 4020 Liège",
+#   "Rue Méan 27, 4020 Liège",
+#   "Rue Roture 13, 4020 Liège",
+#   "50 Bd Voltaire, 75011 Paris, France",
+#   "120 Blvd Marguerite de Rochechouart, 75018 Paris, France",
+#   "211 Av. Jean Jaurès, 75019 Paris, France",
+#   "Brabantlaan 1, 3001 Leuven",
+#   "Martelarenplein 12, 3000 Leuven",
+#   "Hurstweg 8, 9000 Gent",
+#   "Emile Braunplein 39, 9000 Gent",
+#   "Ancienne Belgique, Boulevard Anspach, Brussels", "16 Villa Gaudelet, Paris"]
 
-User.create(email: "a.a@a.a", password: "123123", iban: Faker::Bank.iban, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_type: 1 )
-User.create(email: "b.b@b.b", password: "123123", iban: Faker::Bank.iban, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_type: 2 )
-User.create(email: "c.c@c.c", password: "123123", iban: Faker::Bank.iban, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_type: 3 )
+addresses = ["Brussels",
+  "Antwerp",
+  "Liège",
+  "Paris"
+  "Leuven",
+  "Namur",
+  "Gent",
+  "Avignon",
+  "Geneva"]
+
+User.create(email: "a.customer@gmail.com", password: "123123", iban: Faker::Bank.iban, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_type: 1 )
+refiller1 = User.create(email: "b.refiller@gmail.com", password: "123123", iban: Faker::Bank.iban, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_type: 2 )
+vendor1 = User.create(email: "c.vendor@gmail.com", password: "123123", iban: Faker::Bank.iban, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_type: 3 )
 User.create(email: "d.d@d.d", password: "123123", iban: Faker::Bank.iban, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_type: 1 )
-User.create(email: "e.e@e.e", password: "123123", iban: Faker::Bank.iban, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_type: 2 )
-User.create(email: "e.e@e.e", password: "123123", iban: Faker::Bank.iban, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_type: 3 )
 
 # a_file = URI.open('https://res.cloudinary.com/dd9kjgqwb/image/upload/v1645710417/lance-anderson-ni6Vv9tDAjE-unsplash_typujn.jpg')
 # b_file = URI.open('https://res.cloudinary.com/dd9kjgqwb/image/upload/v1645710418/valdemaras-d-7VPFyhB_j8Y-unsplash_airyl9.jpg')
@@ -44,12 +52,16 @@ User.create(email: "e.e@e.e", password: "123123", iban: Faker::Bank.iban, first_
 # e_file = URI.open('https://res.cloudinary.com/dd9kjgqwb/image/upload/v1645710416/kevin-wolf-BdNtxMj2H4Y-unsplash_n1mwlo.jpg')
 # f_file = URI.open('https://res.cloudinary.com/dd9kjgqwb/image/upload/v1645710416/joah-legg-9HDeGTY2dFk-unsplash_wth37m.jpg')
 
-VendingMachine.create!(name: "Studio Zuid",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
-VendingMachine.create!(name: "Event Lounge",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
-VendingMachine.create!(name: "The Egg",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
-VendingMachine.create!(name: "Versailles",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
-VendingMachine.create!(name: "Studio Noord",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
-VendingMachine.create!(name: "Skyline Park",address: addresses.sample,description: Faker::Space.planet, user: User.all.sample)
+VendingMachine.create!(name: "Studio Zuid",address: "Leuven",description: "Brabantlaan, 1", user: vendor1)
+VendingMachine.create!(name: "Gare Centrale",address: "Brussels",description: "Kantersteen, 10, le Wagon, BE central", user: vendor1)
+VendingMachine.create!(name: "The Egg",address: "Gent",description: "Emile Braunplein, 39", user: vendor1)
+VendingMachine.create!(name: "Sport City",address: "Brussels",description: "Avenue Salomé, 1, Club House", user: vendor1)
+VendingMachine.create!(name: "Studio Noord",address: "Antwerp",description: "DE SINGEL, Desguinlei", user: vendor1)
+VendingMachine.create!(name: "Tour Eifel",address: "Paris",description: "Northern entry", user: vendor1)
+VendingMachine.create!(name: "Saint Amour",address: "Strasbourg",description: "rue Descartes, 44", user: vendor1)
+VendingMachine.create!(name: "Vieux Port",address: "Marseille",description: "rue La Boétie, 36", user: vendor1)
+VendingMachine.create!(name: "Magna Plazza",address: "Amsterdam",description: "Fizeaustraat 77, 2nd Floor", user: vendor1)
+VendingMachine.create!(name: "Mississipi",address: "Maastricht",description: "Hertogsingel, 37D", user: vendor1)
 
 # ('a'..'f').each do |name|
 #   name.save
@@ -71,12 +83,15 @@ VendingMachine.create!(name: "Skyline Park",address: addresses.sample,descriptio
 
 Product.create!(category: "snacks", name: "Lays chips 200gr")
 Product.create!(category: "snacks", name: "Snickers 50gr")
-Product.create!(category: "snacks", name: "M&M pinda 45gr")
+Product.create!(category: "snacks", name: "M&M peanut 45gr")
+Product.create!(category: "snacks", name: "Fruitella 47gr")
 
 Product.create!(category: "drinks", name: "Coca Cola 33cl can")
 Product.create!(category: "drinks", name: "Sprite 33cl can")
 Product.create!(category: "drinks", name: "Chaudfontaine still water 33cl bottle")
 Product.create!(category: "drinks", name: "Aquarius lemon 50cl bottle")
+Product.create!(category: "drinks", name: "Tao Kombucha 33cl can")
+Product.create!(category: "drinks", name: "Vitamin Well Awake 50cl bottle")
 
 Product.create!(category: "technology", name: "Ninebot Segway ES4 battery charged")
 Product.create!(category: "technology", name: "Pure Air Go battery charged")
