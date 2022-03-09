@@ -33,7 +33,7 @@ User.destroy_all
 addresses = ["Brussels",
   "Antwerp",
   "Liège",
-  "Paris"
+  "Paris",
   "Leuven",
   "Namur",
   "Gent",
