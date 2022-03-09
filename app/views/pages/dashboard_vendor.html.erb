@@ -11,7 +11,7 @@
     <div class="stat-card">
       <p><i class="fa fa-user-circle" aria-hidden="true"></i> Current Role </p>
       <h1> Vendor </h1>
-      <p>125  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p>
+      <p><i class="fa fa-sort-asc" aria-hidden="true"></i> 3 months</p>
     </div>
 
     <div class="stat-card">
@@ -34,16 +34,33 @@
   </div>
 </div>
 
-<div class="db-v-btns">
-  <%= link_to  new_vending_machine_path, class:"btn-black", id: "new-vm-btn" do %>
-    <i class="fa fa-plus-circle" aria-hidden="true"></i> New Machine
-  <% end %>
-</div>
+
+
+  <div class="analytics-db-v">
+    <div class="charts">
+      <h2 style="text-align:center">Item categories</h2>
+      <%= pie_chart Product.group(:category).count %>
+    </div>
+    <div class="charts">
+      <h2 style="text-align:center"> Items by price</h2>
+      <%= pie_chart Item.group(:list_price).count %>
+    </div>
+    <div class="charts">
+      <h2 style="text-align:center"> Items by price</h2>
+      <%= pie_chart Item.group(:list_price).count %>
+    </div>
+  </div>
 
 
 
-<div class="db-content">
+
+
+
+
+<div class="db-content" style="margin-top: 50px">
   <div id="my-vm-db" style="" >
+    <h1 class="ml-3 db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-map-marker" aria-hidden="true" style="color:#f8837b"></i> My Auto-Mates  </h1>
+
         <% @vending_machines.each do |vending_machine|%>
             <div class="card-product">
               <img src="https://cdn-icons-png.flaticon.com/512/821/821356.png"/>
@@ -65,15 +82,24 @@
 
             </div>
         <%end %>
+        <div class="db-v-btns d-flex justify-content-center">
+          <%= link_to  new_vending_machine_path, class:"btn-black", id: "new-vm-btn" do %>
+            <i class="fa fa-plus-circle" aria-hidden="true"></i> New Auto-Mate
+          <% end %>
+        </div>
   </div>
-  <div class="analytics-db-v">
-    <div class="charts">
-      <h2 style="text-align:center">Item categories</h2>
-      <%= pie_chart Product.group(:category).count %>
-    </div>
-    <div class="charts">
-      <h2 style="text-align:center"> Items by price</h2>
-      <%= pie_chart Item.group(:list_price).count %>
+  <div class="list-booking">
+          <h1 class="db-header ml-3" style="text-align:center; font-weight:bolder"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> Ongoing Refills</h1>
+
+            <% @bookings.each do |booking| %>
+                  <div class="booking-card text" style="text-align:center">
+                      <h2> <strong><%= booking.vending_machine.name %></strong> </h2>
+                      <p> Address: <strong> <%= booking.vending_machine.address %> </strong> </p>
+                      <p> ⏳Deadline: <%= Time.now + rand(15..120).minutes %></p>
+                      <br>
+                  </div>
+            <% end %>
+        </div>
     </div>
   </div>
 </div>
