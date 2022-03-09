@@ -1,0 +1,11 @@
+
+<div class="container">
+  <div class="new-vending">
+    <%= simple_form_for [ @vending_machine ] do |f| %>
+          <%= f.input :name %>
+          <%= f.input :address %>
+          <%= f.input :description %>
+          <%= f.submit "Update", class: "btn" %>
+        <% end %>
+  </div>
+</div>
