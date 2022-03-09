@@ -15,6 +15,23 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    @vending_machine = @item.vending_machine
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @vending_machine = VendingMachine.find(params[:vending_machine_id])
+    raise
+    if @item.save
+      redirect_to vending_machine_path(@vending_machine), notice: "Your product was successfully changed!"
+    else
+      render :edit
+    end
+
+  end
+
   def destroy
     @item = Item.find(params[:id])
     @vending_machine = @item.vending_machine

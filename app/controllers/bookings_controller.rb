@@ -14,7 +14,8 @@
 
   def complete
     @booking = Booking.find(params[:id])
-    @booking.update(status: 'completed')
+    # date_completed has been added for graph/analytics & demo purposes
+    @booking.update(status: 'completed', date_completed: DateTime.now)
 
     # When booking is completed, the stock is updated
     @booking.vending_machine.items.each do |item|
