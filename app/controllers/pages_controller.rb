@@ -12,6 +12,7 @@ class PagesController < ApplicationController
     # Booking management
     @booking = Booking.new
     @bookings = @vending_machines.flat_map { |vm| vm.bookings.where(status: "pending") }
+    @bookings_c = @vending_machines.flat_map { |vm| vm.bookings.where(status: "completed") }
     @my_bookings = @vending_machines.flat_map { |vm| vm.bookings }
     @my_bookings = Booking.where(vending_machine_id: @vending_machines.pluck(:id))
     # Items
