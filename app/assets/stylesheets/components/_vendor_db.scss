@@ -2,6 +2,7 @@
   background: #dd6860;
   height: 25vh;
   margin: 20px;
+
   display: flex;
   justify-content: space-around;
 }
@@ -48,7 +49,7 @@
 
 .analytics-db-v {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 
 
 }
@@ -83,6 +84,7 @@
 .db-header {
   border-bottom: 5px solid;
   border-color:#dd6860;
+  margin-top: 35px;
 }
 
 #new-vm-btn {

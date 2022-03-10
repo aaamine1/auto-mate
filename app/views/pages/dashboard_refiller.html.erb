@@ -1,6 +1,6 @@
 <div class="content">
   <div class="db-intro">
-    <h1 class="mb-3"> <i class="fa fa-tachometer" aria-hidden="true"></i> My Dashboard as a Refiller</h1>
+    <h1 class="mb-3"> <i class="fa fa-tachometer" aria-hidden="true"></i> My Refiller Dashboard</h1>
 
   </div>
 </div>
@@ -15,12 +15,12 @@
 
     <div class="stat-card">
       <p><i class="fa fa-check" aria-hidden="true"></i> Total completed refills</p>
-      <h1>#<%= Booking.count %> </h1>
+      <h1> <%= (@my_bookings.where(status: "completed")).count %> </h1>
     </div>
 
     <div class="stat-card">
       <p><i class="fa fa-clock-o" aria-hidden="true"></i> Ongoing Refills </p>
-      <h1>#<%= (@bookings.where(status: "completed")).count%> </h1>
+      <h1>#<%= (@my_bookings.where(status: "pending")).count%> </h1>
       <%# <p>3  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p> %>
     </div>
     <div class="stat-card">
