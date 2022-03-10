@@ -39,16 +39,16 @@
   <div class="analytics-db-v">
 
     <div class="charts">
-      <h2 style="text-align:center"> Refills by day of the week</h2>
+      <h2 style="text-align:center; font-weight:bolder"> Refills by day of the week</h2>
       <%# <%= pie_chart @my_items.group(:list_price).count %>
         <%= line_chart(@my_bookings.where(status: "completed").group_by_day(:created_at).count) %>
     </div>
     <div class="charts">
-      <h2 style="text-align:center">Items by categories</h2>
+      <h2 style="text-align:center; font-weight:bolder">Your product categories</h2>
       <%= pie_chart @my_products.group(:category).count, colors: ["#C6D57E", "#D57E7E", "#A2CDCD"] %>
     </div>
     <div class="charts">
-      <h2 style="text-align:center"> Auto-Mate Refill History</h2>
+      <h2 style="text-align:center; font-weight:bolder"> Auto-Mate Refill History</h2>
       <%= pie_chart @my_bookings.group(:status).count, colors: ["#C6D57E", "#D57E7E", "#A2CDCD"] %>
     </div>
   </div>
@@ -59,9 +59,9 @@
 
 
 
-<div class="db-content" style="margin-top: 50px">
+<div class="db-content" style="">
   <div id="my-vm-db" style="" >
-    <h1 class="ml-3 db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-map-marker" aria-hidden="true" style="color:#f8837b"></i> My Auto-Mates  </h1>
+    <h1 class="db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-map-marker" aria-hidden="true" style="color:#f8837b"></i> My Auto-Mates  </h1>
      <div class="db-v-btns d-flex justify-content-center">
       <%= link_to  new_vending_machine_path, class:"btn-black", id: "new-vm-btn" do %>
         <i class="fa fa-plus-circle" aria-hidden="true"></i> New Auto-Mate
@@ -90,7 +90,7 @@
         <%end %>
   </div>
   <div class="list-booking">
-          <h1 class="db-header ml-3" style="text-align:center; font-weight:bolder"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> Ongoing Refills</h1>
+          <h1 class="db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> Ongoing Refills</h1>
 
             <% @bookings.each do |booking| %>
                   <div class="booking-card text" style="text-align:center">
