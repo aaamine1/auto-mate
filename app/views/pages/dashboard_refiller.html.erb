@@ -41,7 +41,7 @@
 <div class="db-content">
   <div id="my-vm-db">
         <div class="list-vm">
-          <h1 class="ml-3"> <i class="fa fa-map-marker" aria-hidden="true" style="color:#f8837b"></i> Auto-Mates to be stocked</p> </h1>
+    <h1 class="db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-map-marker" aria-hidden="true" style="color:#f8837b"></i> Auto-Mates to refill  </h1>
 
           <% @vending_machines.each do |vending_machine|%>
                 <% if vending_machine.bookings.none?{|booking| booking.status == "pending"}%>
@@ -67,7 +67,7 @@
         </div>
   </div>
   <div class="list-booking">
-          <h1 class="my-bookings ml-3"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> My Booked Refills</h1>
+          <h1 class="db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> My Booked Refills</h1>
          <% if @bookings.count < 1 %>
           <h2> No refills scheduled at the moment.. <h2>
          <% end %>
