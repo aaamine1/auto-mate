@@ -26,7 +26,7 @@
     <div class="stat-card">
       <p><i class="fa fa-line-chart" aria-hidden="true"></i> Potential revenue on current refills </p>
       <% if @bookings.count == 0 %>
-       <h1> $0 <h1>
+        <h1> $0 <h1>
       <%elsif @bookings.count == 1%>
       <h1>$<%= rand(25..50) %><h1>
         <%else%>
@@ -70,15 +70,15 @@
           <h1 class="db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> My Booked Refills</h1>
          <% if @bookings.count < 1 %>
           <h2> No refills scheduled at the moment.. <h2>
-         <% end %>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+         <% end %>
             <% @my_bookings = @bookings.each do |booking| %>
             <div class="booking-card">
                 <h2> <strong><%= booking.vending_machine.name %> </strong> </h2>
                   <p> Address: <strong><%= booking.vending_machine.address %> </strong> | <%= booking.vending_machine.description %> </p>
                   <%# <p> ⏳Deadline: <%= Time.now + rand(15..120).minutes %> <%# </p>  %>
                   <div style="color: <%=booking.color%>"> <p>  ⏳Deadline: <%=  booking.created_at + 120.minutes %> </p> </div>
-                <%= link_to 'Mark booking as completed', mark_as_complete_booking_path(booking), method: :patch, class: 'btn '  %>
-                <%= link_to 'Mark booking as cancelled', mark_as_decline_booking_path(booking), method: :patch, class: 'btn-black'  %>
+                <%= link_to 'Mark refill as completed', mark_as_complete_booking_path(booking), method: :patch, class: 'btn '  %>
+                <%= link_to 'Mark refill as cancelled', mark_as_decline_booking_path(booking), method: :patch, class: 'btn-black'  %>
                 </p>
                 <br>
             </div>
