@@ -8,11 +8,17 @@ class PagesController < ApplicationController
     # Vending Machines
     @vending_machines = current_user.vending_machines
     @vm_number = @vending_machines.count
-    # Products
-    @products = Product.all
+
     # Booking management
     @booking = Booking.new
     @bookings = @vending_machines.flat_map { |vm| vm.bookings.where(status: "pending") }
+    @my_bookings = @vending_machines.flat_map { |vm| vm.bookings }
+    @my_bookings = Booking.where(vending_machine_id: @vending_machines.pluck(:id))
+    # Items
+    @my_items = Item.where(vending_machine_id: @vending_machines.pluck(:id))
+    # Products
+    @products = Product.all
+    @my_products = Product.where(id: @my_items.flat_map {|i| i.product})
   end
 
 
@@ -50,5 +56,6 @@ class PagesController < ApplicationController
     @booking = Booking.new
 
     @bookings = current_user.bookings.where(status: "pending")
+    @my_bookings = current_user.bookings
   end
 end
