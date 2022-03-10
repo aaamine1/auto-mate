@@ -1,6 +1,6 @@
 <div class="content">
   <div class="db-intro">
-    <h1 class="mb-3"> <i class="fa fa-tachometer" aria-hidden="true"></i> My Dashboard as a Vendor</h1>
+    <h1 class="mb-3"> <i class="fa fa-tachometer" aria-hidden="true"></i> My Vendor Dashboard</h1>
 
   </div>
 </div>
@@ -35,19 +35,21 @@
 </div>
 
 
-
+  <h1 class="db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-pie-chart"  aria-hidden="true" style="color:#f8837b"></i> Analytics  </h1>
   <div class="analytics-db-v">
+
     <div class="charts">
-      <h2 style="text-align:center">Item categories</h2>
-      <%= pie_chart Product.group(:category).count %>
+      <h2 style="text-align:center; font-weight:bolder"> Refills by day of the week</h2>
+      <%# <%= pie_chart @my_items.group(:list_price).count %>
+        <%= line_chart(@my_bookings.where(status: "completed").group_by_day(:created_at).count) %>
     </div>
     <div class="charts">
-      <h2 style="text-align:center"> Items by price</h2>
-      <%= pie_chart Item.group(:list_price).count %>
+      <h2 style="text-align:center; font-weight:bolder">Your product categories</h2>
+      <%= pie_chart @my_products.group(:category).count, colors: ["#C6D57E", "#D57E7E", "#A2CDCD"] %>
     </div>
     <div class="charts">
-      <h2 style="text-align:center"> Items by price</h2>
-      <%= pie_chart Item.group(:list_price).count %>
+      <h2 style="text-align:center; font-weight:bolder"> Auto-Mate Refill History</h2>
+      <%= pie_chart @my_bookings.group(:status).count, colors: ["#C6D57E", "#D57E7E", "#A2CDCD"] %>
     </div>
   </div>
 
@@ -57,9 +59,9 @@
 
 
 
-<div class="db-content" style="margin-top: 50px">
+<div class="db-content" style="">
   <div id="my-vm-db" style="" >
-    <h1 class="ml-3 db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-map-marker" aria-hidden="true" style="color:#f8837b"></i> My Auto-Mates  </h1>
+    <h1 class="db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-map-marker" aria-hidden="true" style="color:#f8837b"></i> My Auto-Mates  </h1>
      <div class="db-v-btns d-flex justify-content-center">
       <%= link_to  new_vending_machine_path, class:"btn-black", id: "new-vm-btn" do %>
         <i class="fa fa-plus-circle" aria-hidden="true"></i> New Auto-Mate
@@ -88,13 +90,14 @@
         <%end %>
   </div>
   <div class="list-booking">
-          <h1 class="db-header ml-3" style="text-align:center; font-weight:bolder"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> Ongoing Refills</h1>
+          <h1 class="db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> Ongoing Refills</h1>
 
             <% @bookings.each do |booking| %>
                   <div class="booking-card text" style="text-align:center">
                       <h2> <strong><%= booking.vending_machine.name %></strong> </h2>
                       <p> Address: <strong> <%= booking.vending_machine.address %> </strong> </p>
-                      <p> ⏳Deadline: <%= Time.now + rand(15..120).minutes %></p>
+                      <%# <p> ⏳Deadline: <%= Time.now + rand(15..120).minutes %> <%# </p>  %>
+                      <div style="color: <%=booking.color%>"> <p>  ⏳Deadline: <%=  booking.created_at + 120.minutes %> </p> </div>
                       <br>
                   </div>
             <% end %>

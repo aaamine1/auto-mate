@@ -1,6 +1,6 @@
 <div class="content">
   <div class="db-intro">
-    <h1 class="mb-3"> <i class="fa fa-tachometer" aria-hidden="true"></i> My Dashboard as a Refiller</h1>
+    <h1 class="mb-3"> <i class="fa fa-tachometer" aria-hidden="true"></i> My Refiller Dashboard</h1>
 
   </div>
 </div>
@@ -10,22 +10,28 @@
   <div class="stats-db">
     <div class="stat-card">
       <p><i class="fa fa-user-circle" aria-hidden="true"></i> Your profile  </p>
-      <h1>Refiller</h1>
+      <h1>Refiller </h1>
     </div>
 
     <div class="stat-card">
       <p><i class="fa fa-check" aria-hidden="true"></i> Total completed refills</p>
-      <h1>#<%= Booking.count %> </h1>
+      <h1> <%= (@my_bookings.where(status: "completed")).count %> </h1>
     </div>
 
     <div class="stat-card">
       <p><i class="fa fa-clock-o" aria-hidden="true"></i> Ongoing Refills </p>
-      <h1>#<%= (@bookings.where(status: "completed")).count%> </h1>
+      <h1>#<%= (@my_bookings.where(status: "pending")).count%> </h1>
       <%# <p>3  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p> %>
     </div>
     <div class="stat-card">
       <p><i class="fa fa-line-chart" aria-hidden="true"></i> Potential revenue on current refills </p>
-      <h1>$<%= %></h1>
+      <% if @bookings.count == 0 %>
+       <h1> $0 <h1>
+      <%elsif @bookings.count == 1%>
+      <h1>$<%= rand(25..50) %><h1>
+        <%else%>
+      <h1>$<%= rand(50..100) %><h1>
+      <%end%>
       <%# <p>125  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p> %>
     </div>
 
@@ -35,7 +41,7 @@
 <div class="db-content">
   <div id="my-vm-db">
         <div class="list-vm">
-          <h1 class="ml-3"> <i class="fa fa-map-marker" aria-hidden="true" style="color:#f8837b"></i> Auto-Mates to be stocked</p> </h1>
+    <h1 class="db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-map-marker" aria-hidden="true" style="color:#f8837b"></i> Auto-Mates to refill  </h1>
 
           <% @vending_machines.each do |vending_machine|%>
                 <% if vending_machine.bookings.none?{|booking| booking.status == "pending"}%>
@@ -43,8 +49,8 @@
                     <img src="https://cdn-icons-png.flaticon.com/512/821/821356.png"/>
                     <div class="db-card-content">
                       <div class="card-product-infos">
-                        <h2> <%= link_to vending_machine.name, vending_machine_path(vending_machine) %></h2>
-                        <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
+                        <div class="name-and-address"> <h2> <%= link_to vending_machine.name, vending_machine_path(vending_machine) %></h2> </div>
+                        <div class="name-and-address"> <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p> </div>
                       </div>
                     </div>
 
@@ -61,14 +67,16 @@
         </div>
   </div>
   <div class="list-booking">
-          <h1 class="my-bookings ml-3"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> My Booked Refills</h1>
-
+          <h1 class="db-header" style="text-align:center; font-weight:bolder"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> My Booked Refills</h1>
+         <% if @bookings.count < 1 %>
+          <h2> No refills scheduled at the moment.. <h2>
+         <% end %>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <<<<<<< vending-day9-1
             <% @my_bookings = @bookings.each do |booking| %>
             <div class="booking-card">
                 <h2> <strong><%= booking.vending_machine.name %> </strong> </h2>
                   <p> Address: <strong><%= booking.vending_machine.address %> </strong> | <%= booking.vending_machine.description %> </p>
                   <%# <p> ⏳Deadline: <%= Time.now + rand(15..120).minutes %> <%# </p>  %>
-                  <p> ⏳Deadline: <%= booking.created_at + 120.minutes %></p>
+                  <div style="color: <%=booking.color%>"> <p>  ⏳Deadline: <%=  booking.created_at + 120.minutes %> </p> </div> 
                 <%= link_to 'Mark booking as completed', mark_as_complete_booking_path(booking), method: :patch, class: 'btn '  %>
                 <%= link_to 'Mark booking as cancelled', mark_as_decline_booking_path(booking), method: :patch, class: 'btn-black'  %>
                 </p>
