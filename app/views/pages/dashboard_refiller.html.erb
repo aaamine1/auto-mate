@@ -10,7 +10,7 @@
   <div class="stats-db">
     <div class="stat-card">
       <p><i class="fa fa-user-circle" aria-hidden="true"></i> Your profile  </p>
-      <h1>Refiller</h1>
+      <h1>Refiller </h1>
     </div>
 
     <div class="stat-card">
@@ -25,7 +25,13 @@
     </div>
     <div class="stat-card">
       <p><i class="fa fa-line-chart" aria-hidden="true"></i> Potential revenue on current refills </p>
-      <h1>$<%= %></h1>
+      <% if @bookings.count == 0 %>
+       <h1> $0 <h1>
+      <%elsif @bookings.count == 1%>
+      <h1>$<%= rand(25..50) %><h1>
+        <%else%>
+      <h1>$<%= rand(50..100) %><h1>
+      <%end%>
       <%# <p>125  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p> %>
     </div>
 
@@ -43,8 +49,8 @@
                     <img src="https://cdn-icons-png.flaticon.com/512/821/821356.png"/>
                     <div class="db-card-content">
                       <div class="card-product-infos">
-                        <h2> <%= link_to vending_machine.name, vending_machine_path(vending_machine) %></h2>
-                        <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p>
+                        <div class="name-and-address"> <h2> <%= link_to vending_machine.name, vending_machine_path(vending_machine) %></h2> </div>
+                        <div class="name-and-address"> <p> <strong><%= vending_machine.address%> |</strong> <%= vending_machine.description%> </p> </div>
                       </div>
                     </div>
 
@@ -62,20 +68,22 @@
   </div>
   <div class="list-booking">
           <h1 class="my-bookings ml-3"> <i class="fa fa-bookmark" aria-hidden="true" style="color:#f8837b"></i> My Booked Refills</h1>
+         <% if @bookings.count < 1 %>
+          <h2> No refills scheduled at the moment.. <h2>
+         <% end %>
+          <% @my_bookings = @bookings.each do |booking| %>
+          <div class="booking-card">
+              <h2> <strong><%= booking.vending_machine.name %> </strong> </h2>
+              <p> Address: <strong><%= booking.vending_machine.address %> </strong> | <%= booking.vending_machine.description %> </p>
+              <p> ⏳Deadline: <%= Time.now + rand(15..120).minutes %></p>
+              <%= link_to 'Mark booking as completed', mark_as_complete_booking_path(booking), method: :patch, class: 'btn '  %>
+              <%= link_to 'Mark booking as cancelled', mark_as_decline_booking_path(booking), method: :patch, class: 'btn-black'  %>
+              </p>
+              <br>
+          </div>
+          <% end %>
+      </div>
 
-            <% @my_bookings = @bookings.each do |booking| %>
-            <div class="booking-card">
-                <h2> <strong><%= booking.vending_machine.name %> </strong> </h2>
-                  <p> Address: <strong><%= booking.vending_machine.address %> </strong> | <%= booking.vending_machine.description %> </p>
-                  <%# <p> ⏳Deadline: <%= Time.now + rand(15..120).minutes %> <%# </p>  %>
-                  <p> ⏳Deadline: <%= booking.created_at + 120.minutes %></p>
-                <%= link_to 'Mark booking as completed', mark_as_complete_booking_path(booking), method: :patch, class: 'btn '  %>
-                <%= link_to 'Mark booking as cancelled', mark_as_decline_booking_path(booking), method: :patch, class: 'btn-black'  %>
-                </p>
-                <br>
-            </div>
-            <% end %>
-        </div>
     </div>
   </div>
 
