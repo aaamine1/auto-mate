@@ -82,3 +82,26 @@ a {
   text-decoration: none;
   color: black !important;
 }
+
+.card-vm {
+  height: 230px;
+  background-color: #fc776e;
+  margin: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  border-radius: 5px;
+  color: white;
+}
+
+.vendor-buttons-show {
+  position: absolute;
+  bottom: 18px;
+}
+
+.card-vm {
+  position: relative;
+}
+
+.new-vending {
+  height: 50vh;
+  margin: 60px;
+}
