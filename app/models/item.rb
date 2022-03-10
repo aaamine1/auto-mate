@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   validates :product, presence: true
   validates :list_price, presence: true
   validates :margin, presence: true
-  validates :quantity, presence: true
+  validates :capacity, presence: true
 
   def default_item_quantity
     self.quantity ||= 0
