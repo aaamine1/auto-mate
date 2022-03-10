@@ -94,7 +94,8 @@
                   <div class="booking-card text" style="text-align:center">
                       <h2> <strong><%= booking.vending_machine.name %></strong> </h2>
                       <p> Address: <strong> <%= booking.vending_machine.address %> </strong> </p>
-                      <p> ⏳Deadline: <%= Time.now + rand(15..120).minutes %></p>
+                      <%# <p> ⏳Deadline: <%= Time.now + rand(15..120).minutes %> <%# </p>  %>
+                      <div style="color: <%=booking.color%>"> <p>  ⏳Deadline: <%=  booking.created_at + 120.minutes %> </p> </div>
                       <br>
                   </div>
             <% end %>
