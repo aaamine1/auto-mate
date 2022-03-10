@@ -115,15 +115,6 @@ Product.create!(category: "technology", name: "Matrix E-Bike D8 ProS battery cha
    )
 end
 
-3.times do
-  start = Date.today + rand(0..2).day
-  Booking.create!(
-    status: "pending",
-    user: refiller1,
-    vending_machine: VendingMachine.all.sample
-   )
-end
-
 15.times do
   start = Date.today + rand(0..2).day
   Booking.create!(
