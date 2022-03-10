@@ -124,7 +124,7 @@ end
    )
 end
 
-15.times do
+20.times do
   start = Date.today + rand(0..2).day
   Booking.create!(
     status: "completed",
