@@ -21,14 +21,22 @@
     </div>
 
     <div class="stat-card">
-      <p><i class="fa fa-line-chart" aria-hidden="true"></i> Total Income </p>
-      <h1>$10,000 </h1>
-      <p>125  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p>
+      <p><i class="fa fa-line-chart" aria-hidden="true"></i> Total Revenue </p>
+      <% if @bookings_c.count == 0 %>
+        <h1> $0 </h1>
+      <%else%>
+        <h1>$<%= @bookings_c.count * rand(50..100) %></h1>
+      <%end%>
+      <p> <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p>
     </div>
     <div class="stat-card">
-      <p><i class="fa fa-line-chart" aria-hidden="true"></i> Total Income </p>
-      <h1>$10,000</h1>
-      <p>125  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p>
+      <p><i class="fa fa-line-chart" aria-hidden="true"></i> Potential Profits </p>
+        <% if @bookings_c.count == 0 %>
+        <h1> $0 </h1>
+      <%else%>
+        <h1>$<%= @bookings_c.count * rand(10..30) %></h1>
+      <%end%>
+      <p><i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p>
     </div>
 
   </div>
