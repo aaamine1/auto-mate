@@ -27,8 +27,10 @@
       <p><i class="fa fa-line-chart" aria-hidden="true"></i> Potential revenue on current refills </p>
       <% if @bookings.count == 0 %>
        <h1> $0 <h1>
-      <%else%>
+      <%elsif @bookings.count == 1%>
       <h1>$<%= rand(25..50) %><h1>
+        <%else%>
+      <h1>$<%= rand(50..100) %><h1>
       <%end%>
       <%# <p>125  <i class="fa fa-sort-asc" aria-hidden="true"></i> This month</p> %>
     </div>
